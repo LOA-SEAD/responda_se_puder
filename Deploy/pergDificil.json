@@ -1,0 +1,6 @@
+﻿{
+	"numero": ["3", "2"],
+	"1": ["Quem foi Maurice Karnaugh?", "Famoso físico e engenheiro por sua atuação na álgebra booleana", "Pensador do século XX reverenciado por suas pesquisas humanísticas", "Poeta nascido na Hungria que referenciava conceitos religiosos em seus trabalhos", "Matemático e filósofo do século XVIII, conhecido pela descoberta da base natural \"e\".", "http://pt.wikipedia.org/wiki/Maurice_Karnaugh"],
+	"2": ["Qual outro teorema é utilizado na demonstração do Primeiro Teorema Fundamental do Cálculo?", "Teorema do Valor Médio", "Teorema de Weierstrass", "Teorema de Pitágoras", "Teorema do Ponto Fixo", "http://www.somatematica.com.br/superior/integrais/integrais.php"],
+	"3": ["Qual constante é obtida através da derivação da equação que descreve a variação de espaço em um movimento retilíneo uniformemente variado?", "a (Aceleração)", "S (Espaço)", "V (Velocidade Final)", "Vo (Velocidade Inicial)", "http://ifserv.fis.unb.br/matdid/2_1999/Marlon-Eduardo/mruv.htm"]
+}
