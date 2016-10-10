@@ -1,5 +1,5 @@
 function sendData(pergunta,correta,fase,respostas,escolhida,acertou){
-	/*var info = {};
+	var info = {};
     var path;
     if(window.location.hostname == "localhost" ){   // for localhost tests
         path = "/exported-resource/saveStats"
@@ -23,11 +23,11 @@ function sendData(pergunta,correta,fase,respostas,escolhida,acertou){
             success: function(data) {
             }
         })
-});*/
+});/*
 	console.log(pergunta);
 	console.log(correta);
 	console.log(fase);
 	console.log(respostas);
 	console.log(escolhida);
 	console.log(acertou);
-}
+}*/
