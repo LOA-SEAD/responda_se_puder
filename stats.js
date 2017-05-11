@@ -24,7 +24,7 @@ function sendData(correta,pergunta,nroPergunta,respostas,escolhida,acertou,taman
             }
         })
 });
-/*	console.log(pergunta);
+	/*console.log(pergunta);
 	console.log(correta);
 	console.log(nroPergunta);
 	console.log(respostas);
