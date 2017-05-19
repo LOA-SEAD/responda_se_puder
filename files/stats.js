@@ -24,11 +24,11 @@ function sendData(correta,pergunta,nroPergunta,respostas,escolhida,acertou,taman
             }
         })
 });
-	console.log(pergunta);
+	/*console.log(pergunta);
 	console.log(correta);
 	console.log(nroPergunta);
 	console.log(respostas);
 	console.log(escolhida);
     console.log(acertou);
-    console.log(tamanho);
+    console.log(tamanho);*/
 }
