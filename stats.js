@@ -10,7 +10,7 @@ function sendData(correta,pergunta,nroPergunta,respostas,escolhida,acertou,taman
         info.exportedResourceId = json.exportedResourceId;
         info.question = correta;
         info.answer = pergunta;
-        info.levelId = nroPergunta;
+        info.challengeId = nroPergunta;
         info.choices = respostas;
         info.choice = escolhida;
         info.win = acertou;
