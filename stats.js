@@ -1,4 +1,4 @@
-function sendData(correta,pergunta,nroPergunta,respostas,escolhida,acertou,tamanho){
+function sendData(correta,pergunta,nroPergunta,respostas,escolhida,acertou,tamanho,nroFase,nivel){
 	var info = {};
     var path;
     if(window.location.hostname == "localhost" ){   // for localhost tests
@@ -15,6 +15,8 @@ function sendData(correta,pergunta,nroPergunta,respostas,escolhida,acertou,taman
         info.choice = escolhida;
         info.win = acertou;
         info.size = tamanho;
+        info.gameLevel = nroFase;
+        info.gameLevelName = nivel;
         info.gameType = 'multipleChoice';
         $.ajax({
             type: "POST",
@@ -31,6 +33,8 @@ function sendData(correta,pergunta,nroPergunta,respostas,escolhida,acertou,taman
 	console.log(escolhida);
     console.log(acertou);
     console.log(tamanho);
+    console.log(nroFase);
+    console.log(nivel);
 }
 
 function sendRankingData(pontos){
