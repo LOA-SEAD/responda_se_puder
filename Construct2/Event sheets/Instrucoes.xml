@@ -1,0 +1,618 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Instrucoes</name>
+    <events>
+        <variable constant="0" name="instructionCount" sid="251004048708245" static="0" type="number">1</variable>
+        <event-block sid="7650128996828553">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="4715693714070792" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="273317088414318" type="txtPag">
+                    <param id="0" name="Text">instructionCount &amp; &quot; / 4&quot;</param>
+                </action>
+                <action id="-12" name="Set group active" sid="8008461503454569" type="System">
+                    <param id="0" name="Group name">&quot;textFade&quot;</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action id="-12" name="Set group active" sid="6127500172678215" type="System">
+                    <param id="0" name="Group name">&quot;botoes&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+                <action id="1" name="Set size" sid="8502074524664518" type="txtInstrucoesArray">
+                    <param id="0" name="Width">5</param>
+                    <param id="1" name="Height">1</param>
+                    <param id="2" name="Depth">1</param>
+                </action>
+                <action id="2" name="Set at X" sid="5883593875453494" type="txtInstrucoesArray">
+                    <param id="0" name="X">0</param>
+                    <param id="1" name="Value">&quot;O JOGO&#x0D;&#x0A;&#x0D;&#x0A;Responda à pergunta selecionando a alternativa correta e clicando em Confirmar.&#x0D;&#x0A;&#x0D;&#x0A;Sua pontuação é formada pelo número de acertos e o número de erros e ao final, você descobre a sua porcentagem de acertos.&#x0D;&#x0A;&#x0D;&#x0A;Você pode usar 3 ajudas caso tenha dificuldade em achar a alternativa correta.&quot;</param>
+                </action>
+                <action id="2" name="Set at X" sid="6461999487568687" type="txtInstrucoesArray">
+                    <param id="0" name="X">1</param>
+                    <param id="1" name="Value">&quot;AJUDA&#x0D;&#x0A;&#x0D;&#x0A;Os botões de ajuda são:&#x0D;&#x0A;&#x0D;&#x0A;Dica: fornece uma pista para encontrar a resposta certa, quantas vezes precisar&#x0D;&#x0A;&#x0D;&#x0A;50 50: elimina metade das alternativas possíveis e pode ser usada apenas uma vez.&#x0D;&#x0A;&#x0D;&#x0A;Pular: segue para a próxima pergunta e pode ser usada apenas uma vez.&quot;</param>
+                </action>
+                <action id="2" name="Set at X" sid="6245864750187705" type="txtInstrucoesArray">
+                    <param id="0" name="X">2</param>
+                    <param id="1" name="Value">&quot;CONTROLE&#x0D;&#x0A;&#x0D;&#x0A;Durante o jogo, você pode usar atalhos para facilitar a jogabilidade.&#x0D;&#x0A;&#x0D;&#x0A;1 ou A seleciona a alternativa 1.&#x0D;&#x0A;2 ou S seleciona a alternativa 2.&#x0D;&#x0A;3 ou D seleciona a alternativa 3.&#x0D;&#x0A;4 ou F seleciona a alternativa 4.&#x0D;&#x0A;&#x0D;&#x0A;Enter confirma a alternativa selecionada.&quot;</param>
+                </action>
+                <action id="2" name="Set at X" sid="226771914907891" type="txtInstrucoesArray">
+                    <param id="0" name="X">3</param>
+                    <param id="1" name="Value">&quot;PONTUAÇÃO FINAL&#x0D;&#x0A;&#x0D;&#x0A;A fórmula utilizada para o cálculo da pontuação final é a seguinte:&#x0D;&#x0A;&#x0D;&#x0A;100*A/(A+E+P*0,75+C*0,25), sendo:&#x0D;&#x0A;A = número de acertos&#x0D;&#x0A;E = número de erros&#x0D;&#x0A;P = Vale 1 se o jogador utilizou o &apos;Pular&apos;, caso contrário equivale a 0&#x0D;&#x0A;C = Vale 1 se o jogador utilizou o &apos;50 50&apos;, caso contrário equivale a 0.&quot;</param>
+                </action>
+                <action id="0" name="Set text" sid="7481323971617084" type="txtInstrucoes">
+                    <param id="0" name="Text">txtInstrucoesArray.At(instructionCount-1)</param>
+                </action>
+                <action id="-9" name="Set value" sid="7026190464945074" type="System">
+                    <param id="0" name="Variable">volume</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="1137255765897205">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="4253982097845846" type="System">
+                            <param id="0" name="Variable">controleMudo</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="3179339979328735" type="som">
+                            <param id="0" name="Animation">&quot;mute&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="10" name="Set master volume" sid="8204839536644662" type="Audio">
+                            <param id="0" name="dB">-100</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3607695121469937">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="9154253551660075" type="System">
+                            <param id="0" name="Variable">controleMudo</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="3436311616622372" type="som">
+                            <param id="0" name="Animation">&quot;unmute&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="10" name="Set master volume" sid="1436445907219269" type="Audio">
+                            <param id="0" name="dB">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-group description="" inactive="1" sid="1669850289230029" title="textFade">
+            <sub-events>
+                <event-block sid="4109359363336561">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="8064250345893877" type="System" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="8506490448930539">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="6780478212851023" type="System">
+                                    <param id="0" name="First value">txtInstrucoes.fadeFlag</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-16" name="Set opacity" sid="6462163406423868" type="txtInstrucoes">
+                                    <param id="0" name="Opacity">self.Opacity - 250*dt</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="4687094453486128">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="7476647881994338" type="System">
+                                            <param id="0" name="First value">txtInstrucoes.Opacity</param>
+                                            <param id="1" name="Comparison">3</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="3629846996114605" type="txtInstrucoes">
+                                            <param id="0" name="Instance variable">fadeFlag</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action id="0" name="Set text" sid="1901730163495616" type="txtInstrucoes">
+                                            <param id="0" name="Text">txtInstrucoesArray.At(instructionCount-1)</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="1288921473641088">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="9534746621058351" type="System">
+                                    <param id="0" name="First value">txtInstrucoes.fadeFlag</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-16" name="Set opacity" sid="5612182761987499" type="txtInstrucoes">
+                                    <param id="0" name="Opacity">self.Opacity + 250*dt</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="5446527325968345">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="8482411936493185" type="System">
+                                            <param id="0" name="First value">txtInstrucoes.Opacity</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Second value">100</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="7708261224745352" type="txtInstrucoes">
+                                            <param id="0" name="Instance variable">fadeFlag</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                        <action id="-12" name="Set group active" sid="3443437352439205" type="System">
+                                            <param id="0" name="Group name">&quot;textFade&quot;</param>
+                                            <param id="1" name="State">0</param>
+                                        </action>
+                                        <action id="-12" name="Set group active" sid="734495931349664" type="System">
+                                            <param id="0" name="Group name">&quot;botoes&quot;</param>
+                                            <param id="1" name="State">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="3598130779242764" title="botoes">
+            <sub-events>
+                <event-block any="1" sid="332666198762117">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="3425393944934972" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">txtProx</param>
+                        </condition>
+                        <condition id="3" name="On touched object" sid="7444979667339687" type="Touch">
+                            <param id="0" name="Object">txtProx</param>
+                        </condition>
+                        <condition id="0" name="On key pressed" sid="958711105568003" type="Keyboard">
+                            <param id="0" name="Key">39</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="338861798441653">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="2806932347259038" type="System">
+                                    <param id="0" name="First value">instructionCount</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Second value">4</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="1677011914918927" type="System">
+                                    <param id="0" name="Variable">instructionCount</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="0" name="Play" sid="5807387330974211" type="Audio">
+                                    <param id="0" name="Audio file">selecionar_botao</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="0" name="Set text" sid="6204524807838532" type="txtPag">
+                                    <param id="0" name="Text">instructionCount &amp; &quot; / 4&quot;</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="3763760123594024">
+                                    <conditions />
+                                    <actions>
+                                        <action id="-12" name="Set group active" sid="204646901813943" type="System">
+                                            <param id="0" name="Group name">&quot;botoes&quot;</param>
+                                            <param id="1" name="State">0</param>
+                                        </action>
+                                        <action id="-12" name="Set group active" sid="7168742832865207" type="System">
+                                            <param id="0" name="Group name">&quot;textFade&quot;</param>
+                                            <param id="1" name="State">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block any="1" sid="7359915629936311">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="1469776273301571" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">txtAnt</param>
+                        </condition>
+                        <condition id="3" name="On touched object" sid="7691839108868769" type="Touch">
+                            <param id="0" name="Object">txtAnt</param>
+                        </condition>
+                        <condition id="0" name="On key pressed" sid="3629158651391283" type="Keyboard">
+                            <param id="0" name="Key">37</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="9995044554986803">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="4409978190068792" type="System">
+                                    <param id="0" name="First value">instructionCount</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Subtract from" sid="3064239531156426" type="System">
+                                    <param id="0" name="Variable">instructionCount</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="0" name="Play" sid="3361683932551033" type="Audio">
+                                    <param id="0" name="Audio file">selecionar_botao</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="0" name="Set text" sid="9855685015964504" type="txtPag">
+                                    <param id="0" name="Text">instructionCount &amp; &quot; / 4&quot;</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="412199349711559">
+                                    <conditions />
+                                    <actions>
+                                        <action id="-12" name="Set group active" sid="5245876520923852" type="System">
+                                            <param id="0" name="Group name">&quot;botoes&quot;</param>
+                                            <param id="1" name="State">0</param>
+                                        </action>
+                                        <action id="-12" name="Set group active" sid="9438700344091333" type="System">
+                                            <param id="0" name="Group name">&quot;textFade&quot;</param>
+                                            <param id="1" name="State">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="8341231226733725">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="3601393808105278" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">som</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="9210426713391038">
+                            <conditions>
+                                <condition id="2" name="Is playing" sid="5039503587006664" type="som">
+                                    <param id="0" name="Animation">&quot;unmute&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="1252319217538586" type="som">
+                                    <param id="0" name="Animation">&quot;mute&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="10" name="Set master volume" sid="2884368029488334" type="Audio">
+                                    <param id="0" name="dB">-100</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="6966292090985073" type="System">
+                                    <param id="0" name="Variable">controleMudo</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="6863800427352785">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="2355929466267935" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="9638728038493314" type="som">
+                                    <param id="0" name="Animation">&quot;unmute&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="10" name="Set master volume" sid="5195908068213079" type="Audio">
+                                    <param id="0" name="dB">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="4775682581120508" type="System">
+                                    <param id="0" name="Variable">controleMudo</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="6403717284296535" title="atribCSS">
+            <sub-events>
+                <event-block sid="5148599380497264">
+                    <conditions>
+                        <condition id="7" name="Cursor is over object" sid="1327972963707195" type="Mouse">
+                            <param id="0" name="Object">txtMenu</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set cursor style" sid="1958245616603766" type="Mouse">
+                            <param id="0" name="Cursor style">1</param>
+                        </action>
+                        <action id="4" name="Set font color" sid="2018663670739983" type="txtMenu">
+                            <param id="0" name="Color">rgb(255, 163, 115)</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="7350083850341955" type="System">
+                            <param id="0" name="Variable">volume</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="5683361765749469">
+                    <conditions>
+                        <condition id="7" inverted="1" name="Cursor is over object" sid="739822896071391" type="Mouse">
+                            <param id="0" name="Object">txtMenu</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set font color" sid="7928323876880136" type="txtMenu">
+                            <param id="0" name="Color">rgb(91, 164, 130)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="4575040925891957">
+                    <conditions>
+                        <condition id="7" name="Cursor is over object" sid="1144001541245522" type="Mouse">
+                            <param id="0" name="Object">txtProx</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="6851539444554072">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="869407645228256" type="System">
+                                    <param id="0" name="First value">instructionCount</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">4</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set cursor style" sid="3930823314211079" type="Mouse">
+                                    <param id="0" name="Cursor style">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="8739099296694788" type="System">
+                                    <param id="0" name="Variable">volume</param>
+                                    <param id="1" name="Value">-100</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="1523756457895323">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="7791108569547183" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set cursor style" sid="5508283030972409" type="Mouse">
+                                    <param id="0" name="Cursor style">1</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="5572824105929325" type="System">
+                                    <param id="0" name="Variable">volume</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="4" name="Set font color" sid="2738860730786876" type="txtProx">
+                                    <param id="0" name="Color">rgb(255, 163, 115)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="4635807122638109">
+                    <conditions>
+                        <condition id="7" inverted="1" name="Cursor is over object" sid="9020649427610471" type="Mouse">
+                            <param id="0" name="Object">txtProx</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set font color" sid="2384206716141815" type="txtProx">
+                            <param id="0" name="Color">rgb(91, 164, 130)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3131549589857989">
+                    <conditions>
+                        <condition id="7" name="Cursor is over object" sid="2299694574791317" type="Mouse">
+                            <param id="0" name="Object">txtAnt</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="6558369279821364">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="9515599257426394" type="System">
+                                    <param id="0" name="First value">instructionCount</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set cursor style" sid="5613380833543751" type="Mouse">
+                                    <param id="0" name="Cursor style">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="2000116261065295" type="System">
+                                    <param id="0" name="Variable">volume</param>
+                                    <param id="1" name="Value">-100</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="9653802008252122">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="262102707039365" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set cursor style" sid="7168098883391337" type="Mouse">
+                                    <param id="0" name="Cursor style">1</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="6969142361486482" type="System">
+                                    <param id="0" name="Variable">volume</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="4" name="Set font color" sid="4326586462342415" type="txtAnt">
+                                    <param id="0" name="Color">rgb(255, 163, 115)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="2075267686872294">
+                    <conditions>
+                        <condition id="7" name="Cursor is over object" sid="5031251846042417" type="Mouse">
+                            <param id="0" name="Object">som</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set cursor style" sid="8253868169588908" type="Mouse">
+                            <param id="0" name="Cursor style">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7829190453967782">
+                    <conditions>
+                        <condition id="7" inverted="1" name="Cursor is over object" sid="6386647867998389" type="Mouse">
+                            <param id="0" name="Object">txtAnt</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set font color" sid="4011607598755853" type="txtAnt">
+                            <param id="0" name="Color">rgb(91, 164, 130)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="5946635245288914">
+                    <conditions>
+                        <condition id="7" inverted="1" name="Cursor is over object" sid="6682721992802394" type="Mouse">
+                            <param id="0" name="Object">txtMenu</param>
+                        </condition>
+                        <condition id="7" inverted="1" name="Cursor is over object" sid="4245309831785169" type="Mouse">
+                            <param id="0" name="Object">txtProx</param>
+                        </condition>
+                        <condition id="7" inverted="1" name="Cursor is over object" sid="474585580322964" type="Mouse">
+                            <param id="0" name="Object">txtAnt</param>
+                        </condition>
+                        <condition id="7" inverted="1" name="Cursor is over object" sid="9860244335594861" type="Mouse">
+                            <param id="0" name="Object">som</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set cursor style" sid="5869790828541149" type="Mouse">
+                            <param id="0" name="Cursor style">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="7973242605397259" type="System">
+                            <param id="0" name="Variable">controleAudio</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3841089730861346">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="7439309871839055" type="System" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="5108378156192917">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="6494479946557173" type="System">
+                                    <param id="0" name="Variable">controleAudio</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="2325491353754692" type="Audio">
+                                    <param id="0" name="Audio file">sobre_botao</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">volume</param>
+                                    <param id="1" name="Tag (optional)">&quot;sobre&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="5402881201805841" type="System">
+                                    <param id="0" name="Variable">controleAudio</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="6541814929334548">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="8900916653367983" type="System">
+                            <param id="0" name="First value">instructionCount</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">4</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set font color" sid="8063450892734493" type="txtProx">
+                            <param id="0" name="Color">rgb(27,83,57)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7148250809048183">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="8971180474803821" type="System">
+                            <param id="0" name="First value">instructionCount</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set font color" sid="725027323305951" type="txtAnt">
+                            <param id="0" name="Color">rgb(27,83,57)</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block any="1" sid="4270916332489598">
+            <conditions>
+                <condition id="6" name="On object clicked" sid="9513488810716604" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">txtMenu</param>
+                </condition>
+                <condition id="3" name="On touched object" sid="3389969732860814" type="Touch">
+                    <param id="0" name="Object">txtMenu</param>
+                </condition>
+                <condition id="0" name="On key pressed" sid="5112539773193894" type="Keyboard">
+                    <param id="0" name="Key">13</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Play" sid="2867645318249139" type="Audio">
+                    <param id="0" name="Audio file">selecionar_botao</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="-2" name="Go to layout" sid="8907362298437427" type="System">
+                    <param id="0" name="Layout">Principal</param>
+                </action>
+                <action id="-9" name="Set value" sid="9962625312991415" type="System">
+                    <param id="0" name="Variable">instructionCount</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

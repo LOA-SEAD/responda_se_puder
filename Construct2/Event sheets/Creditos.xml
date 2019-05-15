@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Creditos</name>
+    <events>
+        <variable constant="0" name="volume" sid="3738391356905193" static="0" type="number">0</variable>
+        <event-block sid="5344055432844499">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="6529960123024751" type="System" />
+            </conditions>
+            <actions>
+                <action id="33" name="Stop all" sid="7796506722398007" type="Audio" />
+                <action id="-3" name="Set position" sid="7127462906189944" type="TextCreditos">
+                    <param id="0" name="X">400</param>
+                    <param id="1" name="Y">600</param>
+                </action>
+                <action id="-16" name="Set opacity" sid="1884635412757174" type="Logos">
+                    <param id="0" name="Opacity">100</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="7632555990955071" type="Logos">
+                    <param id="0" name="Pin to">TextCreditos</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action id="0" name="Play" sid="6389341376070448" type="Audio">
+                    <param id="0" name="Audio file">creditos</param>
+                    <param id="2" name="Loop">1</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;creditos&quot;</param>
+                </action>
+                <action id="0" name="Set text" sid="4621700084946541" type="TextCreditos">
+                    <param id="0" name="Text">&quot;&#x0D;&#x0A;&#x0D;&#x0A;COORDENAÇÃO&#x0D;&#x0A;Delano Medeiros Beder&#x0D;&#x0A;Joice Lee Otsuka&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;ORIENTAÇÃO&#x0D;&#x0A;Delano Medeiros Beder&#x0D;&#x0A;Ivan Zanetti Rocca&#x0D;&#x0A;Joice Lee Otsuka&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;ROTEIRO&#x0D;&#x0A;Jheniffer Camila Pedro&#x0D;&#x0A;Marcos Vinicius Costa&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;DESENVOLVIMENTO&#x0D;&#x0A;Guilherme Henrique Romanini Perego&#x0D;&#x0A;Lucas Oliveira David&#x0D;&#x0A;Luiz Valério Neto&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;ILUSTRAÇÃO&#x0D;&#x0A;Catarine Santana Ohnuma&#x0D;&#x0A;Jessica Sayuri Nishiguchi&#x0D;&#x0A;Luiz Valério Neto&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;TRILHA SONORA&#x0D;&#x0A;Daniel Lopes Santiago&quot;</param>
+                </action>
+                <action id="-12" name="Set group active" sid="9777610408114041" type="System">
+                    <param id="0" name="Group name">&quot;Movimento&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+                <action id="-12" name="Set group active" sid="620856410284635" type="System">
+                    <param id="0" name="Group name">&quot;Logos&quot;</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="5284126947799075" type="System">
+                    <param id="0" name="Variable">volume</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block any="1" sid="4770999942515191">
+            <conditions>
+                <condition id="1" name="On any click" sid="3044017853428632" type="Mouse" />
+                <condition id="1" name="On any key pressed" sid="8640736950761756" type="Keyboard" />
+            </conditions>
+            <actions>
+                <action id="6" name="Stop" sid="7749172315611662" type="Audio">
+                    <param id="0" name="Tag">&quot;&quot;</param>
+                </action>
+                <action id="-2" name="Go to layout" sid="8625705499075289" type="System">
+                    <param id="0" name="Layout">Principal</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-group description="" sid="699416968075339" title="Movimento">
+            <sub-events>
+                <event-block sid="4712286450265412">
+                    <conditions>
+                        <condition id="-2" name="Compare Y" sid="9716986992697729" type="TextCreditos">
+                            <param id="0" name="Comparison">5</param>
+                            <param id="1" name="Y co-ordinate">-900</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="6876281537993511">
+                            <conditions>
+                                <condition id="-1" name="Every tick" sid="8604064222677335" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-2" name="Set Y" sid="7964758277858311" type="TextCreditos">
+                                    <param id="0" name="Y">self.Y - 3</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="4561689486605435">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="2126085537567671" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-12" name="Set group active" sid="7242192218354515" type="System">
+                            <param id="0" name="Group name">&quot;Movimento&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action disabled="1" id="-16" name="Wait" sid="4163412645484991" type="System">
+                            <param id="0" name="Seconds">2</param>
+                        </action>
+                        <action disabled="1" id="-12" name="Set group active" sid="1623203461924924" type="System">
+                            <param id="0" name="Group name">&quot;Logos&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" inactive="1" sid="1989476466437057" title="Logos">
+            <sub-events>
+                <event-block sid="4754920474774988">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="1915246629727192" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="7205800136072235" type="Logos">
+                            <param id="0" name="Opacity">self.Opacity - 70*dt</param>
+                        </action>
+                        <action id="3" name="Set volume" sid="4944448940444605" type="Audio">
+                            <param id="0" name="Tag">&quot;&quot;</param>
+                            <param id="1" name="dB">volume - 50*dt</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="507966775645008" type="System">
+                            <param id="0" name="Variable">volume</param>
+                            <param id="1" name="Value">volume - 50*dt</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3202446720003792">
+                    <conditions>
+                        <condition id="-10" name="Compare opacity" sid="4745032429490618" type="Logos">
+                            <param id="0" name="Comparison">3</param>
+                            <param id="1" name="Opacity">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="6" name="Stop" sid="8581600732906873" type="Audio">
+                            <param id="0" name="Tag">&quot;&quot;</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="7593019161005266" type="System">
+                            <param id="0" name="Layout">Principal</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>

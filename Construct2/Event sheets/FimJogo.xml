@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>FimJogo</name>
+    <events>
+        <variable constant="0" name="controleBrilho2" sid="6973512337196889" static="0" type="number">1</variable>
+        <comment>Armazena a porcentagem final do jogador para apresentá-la da tela final e enviá-la ao remar</comment>
+        <variable constant="0" name="porcentagem" sid="131829129983958" static="0" type="number">0</variable>
+        <comment>Abre a tela de conclusão e envia seu ranking para o REMAR</comment>
+        <event-block sid="3611355347372717">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="7648973610070348" type="System" />
+            </conditions>
+            <actions>
+                <action id="33" name="Stop all" sid="2534415884461076" type="Audio" />
+                <action id="0" name="Set cursor style" sid="1108338425444448" type="Mouse">
+                    <param id="0" name="Cursor style">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="574667348070003" type="System">
+                    <param id="0" name="Variable">porcentagem</param>
+                    <param id="1" name="Value">round(100*acertos / (acertos+erros+(3*UtilizouPular/4) + (Utilizou5050/4)))</param>
+                </action>
+                <action id="0" name="Set text" sid="4430743415634867" type="txtFimJogo">
+                    <param id="0" name="Text">&quot;Você concluiu o jogo!&quot; &amp; newline &amp; &quot;Sua pontuação foi de: &quot;&amp; porcentagem &amp; &quot;%&quot; &amp; newline &amp; newline &amp; &quot;(Clique em qualquer lugar ou pressione qualquer botão para retornar)&quot;</param>
+                </action>
+                <action id="0" name="Play" sid="9026531862986806" type="Audio">
+                    <param id="0" name="Audio file">parabains</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">-15</param>
+                    <param id="1" name="Tag (optional)">&quot;parabains&quot;</param>
+                </action>
+                <action id="0" name="Execute" sid="943566756526676" type="CallJS">
+                    <param id="0" name="Value">&quot;sendRankingData(&quot; &amp; porcentagem &amp; &quot;)&quot;</param>
+                </action>
+                <action disabled="1" id="0" name="Execute" sid="996603523196217" type="CallJS">
+                    <param id="0" name="Value">&quot;sendTimeData(&quot; &amp; tempoFinal - tempoInicial &amp; &quot;)&quot;</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="1929043285422171">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="4324357081934327" type="System">
+                            <param id="0" name="Variable">controleMudo</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="6099702586962109" type="som">
+                            <param id="0" name="Animation">&quot;mute&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="10" name="Set master volume" sid="8428412751379262" type="Audio">
+                            <param id="0" name="dB">-100</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="5850607312707444">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="9148102685580047" type="System">
+                            <param id="0" name="Variable">controleMudo</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="4580078177755518" type="som">
+                            <param id="0" name="Animation">&quot;unmute&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="10" name="Set master volume" sid="8247134319117746" type="Audio">
+                            <param id="0" name="dB">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="1841262878875093">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="3148970702569682" type="System">
+                    <param id="0" name="Variable">controleBrilho2</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="6" name="Set speed" sid="4022026855084683" type="brilho_animado2">
+                    <param id="0" name="Speed">14</param>
+                </action>
+                <action id="4" name="Set animation" sid="9511820861821244" type="brilho_animado2">
+                    <param id="0" name="Animation">&quot;Brilhando&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="8333359126121062">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="3266469138215321" type="System">
+                    <param id="0" name="Interval (seconds)">1.20</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Play" sid="7484776626189077" type="Audio">
+                    <param id="0" name="Audio file">brilho</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">-22</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-group description="" sid="1355329827233226" title="contrMouse">
+            <sub-events>
+                <event-block any="1" sid="4605836539483243">
+                    <conditions>
+                        <condition id="1" name="On any key pressed" sid="393855221801023" type="Keyboard" />
+                        <condition id="6" name="On object clicked" sid="411527246797454" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">Clickable</param>
+                        </condition>
+                        <condition id="3" name="On touched object" sid="2319345758604954" type="Touch">
+                            <param id="0" name="Object">Clickable</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="1435391841364654">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="8592209828613035" type="System">
+                                    <param id="0" name="Variable">controleMudo</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-21" name="Reset global variables" sid="17436026840536" type="System" />
+                                <action id="-9" name="Set value" sid="7745474262218469" type="System">
+                                    <param id="0" name="Variable">controleMudo</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-25" name="Go to layout (by name)" sid="5166844066688918" type="System">
+                                    <param id="0" name="Layout">&quot;Principal&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="4546641185189712">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="8756653454675664" type="System">
+                                    <param id="0" name="Variable">controleMudo</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-21" name="Reset global variables" sid="6203592875446747" type="System" />
+                                <action id="-9" name="Set value" sid="2706690896277517" type="System">
+                                    <param id="0" name="Variable">controleMudo</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-25" name="Go to layout (by name)" sid="576873380503938" type="System">
+                                    <param id="0" name="Layout">&quot;Principal&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="9079117797819338">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="1655120084098916" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">som</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="3311805929851108">
+                            <conditions>
+                                <condition id="2" name="Is playing" sid="9846662234061702" type="som">
+                                    <param id="0" name="Animation">&quot;unmute&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="1237121219203929" type="som">
+                                    <param id="0" name="Animation">&quot;mute&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="10" name="Set master volume" sid="7457556705278152" type="Audio">
+                                    <param id="0" name="dB">-100</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="1535305447990464" type="System">
+                                    <param id="0" name="Variable">controleMudo</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="4370735102882344">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="1926349486284161" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="569403657048445" type="som">
+                                    <param id="0" name="Animation">&quot;unmute&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="10" name="Set master volume" sid="5396685754214078" type="Audio">
+                                    <param id="0" name="dB">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="8198150614551142" type="System">
+                                    <param id="0" name="Variable">controleMudo</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="8347044095514539">
+            <conditions>
+                <condition id="7" name="Cursor is over object" sid="5979137159466652" type="Mouse">
+                    <param id="0" name="Object">som</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Set cursor style" sid="8211845438008535" type="Mouse">
+                    <param id="0" name="Cursor style">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="7572730584237335">
+            <conditions>
+                <condition id="-22" name="Else" sid="1091510822239684" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set cursor style" sid="1696961808752013" type="Mouse">
+                    <param id="0" name="Cursor style">0</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

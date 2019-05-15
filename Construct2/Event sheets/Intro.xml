@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Intro</name>
+    <events>
+        <event-block sid="9135800946512096">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="224509034805833" type="System" />
+            </conditions>
+            <actions>
+                <action id="4" name="Preload" sid="3722325253622368" type="Audio">
+                    <param id="0" name="Audio file">botao_caindo</param>
+                </action>
+                <action id="4" name="Preload" sid="9773982346681062" type="Audio">
+                    <param id="0" name="Audio file">brilho</param>
+                </action>
+                <action id="4" name="Preload" sid="3408559470534779" type="Audio">
+                    <param id="0" name="Audio file">creditos</param>
+                </action>
+                <action id="4" name="Preload" sid="1364674617518678" type="Audio">
+                    <param id="0" name="Audio file">parabains</param>
+                </action>
+                <action id="4" name="Preload" sid="6014783835985548" type="Audio">
+                    <param id="0" name="Audio file">resposta_certa</param>
+                </action>
+                <action id="4" name="Preload" sid="1041125062178166" type="Audio">
+                    <param id="0" name="Audio file">resposta_errada</param>
+                </action>
+                <action id="4" name="Preload" sid="9655584682073782" type="Audio">
+                    <param id="0" name="Audio file">selecionar_botao</param>
+                </action>
+                <action id="4" name="Preload" sid="6349495045037681" type="Audio">
+                    <param id="0" name="Audio file">sobre_botao</param>
+                </action>
+                <action id="4" name="Preload" sid="628807517428673" type="Audio">
+                    <param id="0" name="Audio file">xdica</param>
+                </action>
+                <action id="-16" name="Set opacity" sid="8716098199843912" type="Logos">
+                    <param id="0" name="Opacity">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-group description="" sid="4995663658407356" title="FadeIn">
+            <sub-events>
+                <event-block sid="9562184196651055">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="4858674704393034" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="732597744983972" type="Logos">
+                            <param id="0" name="Opacity">self.Opacity + 50*dt</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="463059997731998">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="7886515934723398" type="System">
+                            <param id="0" name="First value">Logos.Opacity</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Second value">100</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Wait" sid="2570147834633618" type="System">
+                            <param id="0" name="Seconds">1.0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="9314519436639644" type="System">
+                            <param id="0" name="Group name">&quot;FadeIn&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="6790171696222696" type="System">
+                            <param id="0" name="Group name">&quot;FadeOut&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" inactive="1" sid="9665563775937531" title="FadeOut">
+            <sub-events>
+                <event-block sid="9614174508692132">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="8388419856430458" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="138600771332849" type="Logos">
+                            <param id="0" name="Opacity">self.Opacity - 50*dt</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="6216742251669345">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="9051786943916894" type="System">
+                            <param id="0" name="First value">Logos.Opacity</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="6757097656218004" type="System">
+                            <param id="0" name="Layout">Principal</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block any="1" sid="4547660422267961">
+            <conditions>
+                <condition id="1" name="On any click" sid="6746183124036239" type="Mouse" />
+                <condition id="0" name="On any touch start" sid="9925243298310659" type="Touch" />
+                <condition id="1" name="On any key pressed" sid="3202390374045139" type="Keyboard" />
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="9354999426738245" type="System">
+                    <param id="0" name="Layout">Principal</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

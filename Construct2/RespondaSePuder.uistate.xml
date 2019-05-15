@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2uistate>
+    <!--This is a UI state file - its content describes the user interface settings when the project was last open.
+It is entirely optional and the project will load without it.  If you are placing the project under source control,
+you probably do not want to add any .uistate.xml files to the repository.-->
+    <configurations>
+        <active>
+            <configuration name="HTML 5" />
+        </active>
+        <display name="HTML 5" />
+    </configurations>
+    <open-tabs>
+        <layout order="1">Perguntas</layout>
+        <layout order="2">Intro</layout>
+        <layout order="3">Principal</layout>
+        <layout order="4">FimJogo</layout>
+        <event-sheet active="1" order="0">Perguntas</event-sheet>
+        <event-sheet order="5">FimJogo</event-sheet>
+        <event-sheet order="6">Instrucoes</event-sheet>
+        <event-sheet order="7">Intro</event-sheet>
+        <event-sheet order="8">Principal</event-sheet>
+    </open-tabs>
+    <properties>
+        <property expanded="1" name="About" />
+        <property expanded="1" name="Project settings" />
+        <property expanded="0" name="Window Size" />
+        <property expanded="1" name="Configuration Settings" />
+    </properties>
+    <families-expanded root="1" />
+    <folders-expanded>
+        <folder expanded="1" path="object-folder/" />
+        <folder expanded="1" path="object-folder/layPrincipal/" />
+        <folder expanded="1" path="object-folder/layPerguntas/" />
+        <folder expanded="0" path="object-folder/layFimJogo/" />
+        <folder expanded="1" path="object-folder/layInstrucoes/" />
+        <folder expanded="0" path="object-folder/layCreditos/" />
+        <folder expanded="1" path="layout-folder/" />
+        <folder expanded="1" path="event-folder/" />
+        <folder expanded="1" path="file-folder/" />
+        <folder expanded="0" path="sound-folder/" />
+        <folder expanded="1" path="music-folder/" />
+        <folder expanded="1" path="file-folder/Icons/" />
+        <folder expanded="1" path="file-folder/Perguntas/" />
+        <folder expanded="1" path="file-folder/Coleta/" />
+        <folder expanded="1" path="animation-folder/btnJogar/" />
+        <folder expanded="1" path="animation-folder/btnCreditos/" />
+        <folder expanded="1" path="animation-folder/btnInstrucoes/" />
+        <folder expanded="1" path="animation-folder/brilho_animado/" />
+        <folder expanded="1" path="animation-folder/icone/" />
+        <folder expanded="1" path="animation-folder/areaBotao/" />
+        <folder expanded="1" path="animation-folder/respCerta/" />
+        <folder expanded="1" path="animation-folder/respErrada/" />
+        <folder expanded="1" path="animation-folder/XDica/" />
+        <folder expanded="1" path="animation-folder/telaDica/" />
+        <folder expanded="1" path="animation-folder/btnDica/" />
+        <folder expanded="1" path="animation-folder/btnPular/" />
+        <folder expanded="1" path="animation-folder/btnMenu/" />
+        <folder expanded="1" path="animation-folder/btn5050/" />
+        <folder expanded="1" path="animation-folder/btnConfirmar/" />
+        <folder expanded="1" path="animation-folder/brilho_animado2/" />
+        <folder expanded="1" path="animation-folder/Clickable/" />
+        <folder expanded="1" path="animation-folder/Logos/" />
+        <folder expanded="1" path="animation-folder/som/" />
+    </folders-expanded>
+</c2uistate>

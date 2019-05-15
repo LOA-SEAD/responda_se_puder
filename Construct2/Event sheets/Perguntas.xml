@@ -1,0 +1,1862 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Perguntas</name>
+    <events>
+        <variable constant="0" name="clicouProx" sid="8172070276037591" static="0" type="number">0</variable>
+        <variable constant="0" name="UtilizouPular" sid="2712808717137155" static="0" type="number">0</variable>
+        <variable constant="0" name="Utilizou5050" sid="1559911289954063" static="0" type="number">0</variable>
+        <variable constant="0" name="Pergunta5050Utilizado" sid="5952652296848032" static="0" type="number">-1</variable>
+        <variable constant="0" name="DadosCarregados" sid="8213155773539681" static="0" type="number">0</variable>
+        <variable constant="0" name="RespCorreta" sid="7613709242531747" static="0" type="text"></variable>
+        <variable constant="0" name="txtDica" sid="5496435048826864" static="0" type="text"></variable>
+        <variable constant="0" name="txtRespErr1" sid="6537121274853186" static="0" type="text"></variable>
+        <variable constant="0" name="txtRespErr2" sid="4732991320038588" static="0" type="text"></variable>
+        <comment>Utilizada para executar a função existente no arquivo stats.js</comment>
+        <variable constant="0" name="SendJS" sid="909023558764149" static="0" type="text"></variable>
+        <comment>&quot;Resp&quot; armazena um numero que faz referencia a qual alternativa o jogador escolheu, &quot;RespCorreta&quot; armazena uma referencia da alternativa correta e &quot;Pergunta&quot; armazena o texto da pergunta que está contida no .xml. </comment>
+        <variable constant="0" name="Pergunta" sid="114085571799817" static="0" type="text"></variable>
+        <comment>Serve para armazenar o texto da resposta escolhida pelo jogador</comment>
+        <variable constant="0" name="RespostaEscolhida" sid="249449250907671" static="0" type="text"></variable>
+        <comment>Variável contendo valores do levelName que será passado pelo js</comment>
+        <variable constant="0" name="infoNivel" sid="223032299512151" static="0" type="text"></variable>
+        <event-block sid="931639118726035">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="6168563823339619" type="System" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="7375749086934334">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="4531912701272738" type="System">
+                            <param id="0" name="Variable">controleMudo</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="7196493266249205" type="som">
+                            <param id="0" name="Animation">&quot;mute&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="10" name="Set master volume" sid="7717263207368531" type="Audio">
+                            <param id="0" name="dB">-100</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3409229167911618">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="5041483971037739" type="System">
+                            <param id="0" name="Variable">controleMudo</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="248326401296615" type="som">
+                            <param id="0" name="Animation">&quot;unmute&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="10" name="Set master volume" sid="7209003152594437" type="Audio">
+                            <param id="0" name="dB">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="2824821604708598">
+                    <conditions />
+                    <actions>
+                        <action id="-1" name="Set X" sid="2075249675500966" type="XDica">
+                            <param id="0" name="X">-712</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="8169935542001199" type="telaDica">
+                            <param id="0" name="X">-400</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="9766659621057517" type="txtDica">
+                            <param id="0" name="X">-400</param>
+                        </action>
+                        <action id="0" name="Load JSON" sid="7787496911488383" type="pergFacil" />
+                        <action id="0" name="Load JSON" sid="7784923040807623" type="pergMedio" />
+                        <action id="0" name="Load JSON" sid="9830759957518723" type="pergDificil" />
+                        <action id="-9" name="Set value" sid="1332106469311677" type="System">
+                            <param id="0" name="Variable">numPergFacil</param>
+                            <param id="1" name="Value">PergFacil.GetData(&quot;numero&quot;, 1)</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="9764123977229422" type="System">
+                            <param id="0" name="Variable">numPergMedio</param>
+                            <param id="1" name="Value">PergMedio.GetData(&quot;numero&quot;, 1)</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="4427931380736551" type="System">
+                            <param id="0" name="Variable">numPergDificil</param>
+                            <param id="1" name="Value">PergDificil.GetData(&quot;numero&quot;, 1)</param>
+                        </action>
+                        <action id="1" name="New size" sid="6277668198062169" type="sortFacil">
+                            <param id="0" name="Size">int(PergFacil.GetData(&quot;numero&quot;, 0))</param>
+                        </action>
+                        <action id="1" name="New size" sid="5363596897421312" type="sortMedio">
+                            <param id="0" name="Size">int(PergMedio.GetData(&quot;numero&quot;, 0))</param>
+                        </action>
+                        <action id="1" name="New size" sid="4671014255300241" type="sortDificil">
+                            <param id="0" name="Size">int(PergDificil.GetData(&quot;numero&quot;, 0))</param>
+                        </action>
+                        <action id="0" name="New scramble" sid="97795182392792" type="sortFacil" />
+                        <action id="0" name="New scramble" sid="3566294992358323" type="sortMedio" />
+                        <action id="0" name="New scramble" sid="5781439391416753" type="sortDificil" />
+                        <action id="-12" name="Set group active" sid="7596449367808298" type="System">
+                            <param id="0" name="Group name">&quot;montaPerg&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-group description="" inactive="1" sid="8103671476710143" title="montaPerg">
+            <sub-events>
+                <event-group description="" sid="3976043260658804" title="fimJogo">
+                    <sub-events>
+                        <event-block sid="4510323710256658">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="3693822052702191" type="System">
+                                    <param id="0" name="First value">numPergFacil +numPergMedio +numPergDificil +1</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">perguntaAtual</param>
+                                </condition>
+                                <condition id="-15" name="Is group active" sid="2660386921344199" type="System">
+                                    <param id="0" name="Group name">&quot;montaPerg&quot;</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="9589803158739798" type="System">
+                                    <param id="0" name="First value">DadosCarregados</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="691249175034758" type="System">
+                                    <param id="0" name="Variable">tempoFinal</param>
+                                    <param id="1" name="Value">time</param>
+                                </action>
+                                <action id="0" name="Execute" sid="506510948854291" type="CallJS">
+                                    <param id="0" name="Value">&quot;sendPlaytimeData(tempoFinal,0,&apos;RespondasePuder&apos;)&quot;</param>
+                                </action>
+                                <action id="-25" name="Go to layout (by name)" sid="7516078165663391" type="System">
+                                    <param id="0" name="Layout">&quot;FimJogo&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-block sid="3071942564635502">
+                    <conditions>
+                        <condition id="-15" name="Is group active" sid="7678785957516175" type="System">
+                            <param id="0" name="Group name">&quot;montaPerg&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="6" name="Enable all lines" sid="6423779790026799" type="radboxResp" />
+                        <action id="9" name="Uncheck all lines" sid="1967812853456622" type="radboxResp" />
+                        <action id="0" name="Set text" sid="6023385048759833" type="txtPontuacao">
+                            <param id="0" name="Text">&quot;Pontuação - Acertos: &quot;&amp; acertos &amp; &quot; Erros: &quot; &amp; erros</param>
+                        </action>
+                        <action id="0" name="New scramble" sid="372134387999412" type="sortRespostas" />
+                        <action id="0" name="New scramble" sid="6889698766346827" type="sort5050" />
+                        <action id="-9" name="Set value" sid="8077370747565611" type="System">
+                            <param id="0" name="Variable">DadosCarregados</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="4918057590331323" type="System">
+                            <param id="0" name="Group name">&quot;RegrasJogo&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="2062339439278764">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="9905099993256706" type="System">
+                                    <param id="0" name="First value">perguntaAtual</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Second value">numPergFacil</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="341185772980976" type="System">
+                                    <param id="0" name="Variable">infoNivel</param>
+                                    <param id="1" name="Value">&quot;&apos;&quot; &amp; PergFacil.GetData(&quot;numero&quot;, 1) &amp; &quot;&apos;,1,&apos;Nível Fácil&apos;&quot;</param>
+                                </action>
+                                <action id="0" name="Set text" sid="1217535667829487" type="txtPergunta">
+                                    <param id="0" name="Text">pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), 0)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="4194521126144516" type="System">
+                                    <param id="0" name="Variable">txtDica</param>
+                                    <param id="1" name="Value">pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular -1)), 5)</param>
+                                </action>
+                                <action id="1" name="Change text" sid="2634686359248639" type="radboxResp">
+                                    <param id="0" name="Text of the line:">pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(0))</param>
+                                    <param id="1" name="Set the ID of line:">0</param>
+                                </action>
+                                <action id="1" name="Change text" sid="8490767616851666" type="radboxResp">
+                                    <param id="0" name="Text of the line:">pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(1))</param>
+                                    <param id="1" name="Set the ID of line:">1</param>
+                                </action>
+                                <action id="1" name="Change text" sid="5564185258669413" type="radboxResp">
+                                    <param id="0" name="Text of the line:">pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(2))</param>
+                                    <param id="1" name="Set the ID of line:">2</param>
+                                </action>
+                                <action id="1" name="Change text" sid="368967754611856" type="radboxResp">
+                                    <param id="0" name="Text of the line:">pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(3))</param>
+                                    <param id="1" name="Set the ID of line:">3</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="915163563486291" type="System">
+                                    <param id="0" name="Variable">RespCorreta</param>
+                                    <param id="1" name="Value">pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), 1)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="1449783369740038" type="System">
+                                    <param id="0" name="Variable">txtRespErr1</param>
+                                    <param id="1" name="Value">pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sort5050.At(0))</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="1877805710676214" type="System">
+                                    <param id="0" name="Variable">txtRespErr2</param>
+                                    <param id="1" name="Value">pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sort5050.At(1))</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="662398737545617" type="System">
+                                    <param id="0" name="Variable">Pergunta</param>
+                                    <param id="1" name="Value">&quot;&apos;&quot; &amp; replace(pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), 0), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&apos;&quot; &amp; replace(RespCorreta, &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&apos;&quot; &amp; sortFacil.At(perguntaAtual + UtilizouPular - 1) - 1 &amp; &quot;&apos;,&apos;&quot; &amp; replace(pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(0)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(1)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(2)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(3)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&quot; </param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="6986521517281302">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="2038666476145034" type="System">
+                                    <param id="0" name="First value">perguntaAtual</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">numPergFacil</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="5493079600440809" type="System">
+                                    <param id="0" name="First value">perguntaAtual</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Second value">numPergMedio +numPergFacil</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="106332696999565" type="System">
+                                    <param id="0" name="Variable">infoNivel</param>
+                                    <param id="1" name="Value">&quot;&apos;&quot; &amp; pergMedio.GetData(&quot;numero&quot;, 1) &amp; &quot;&apos;,2,&apos;Nível Médio&apos;&quot;</param>
+                                </action>
+                                <action id="0" name="Set text" sid="4825741520103436" type="txtPergunta">
+                                    <param id="0" name="Text">pergMedio.GetData(str(sortMedio.At(perguntaAtual -numPergFacil + UtilizouPular -1)), 0)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="9757013417890846" type="System">
+                                    <param id="0" name="Variable">txtDica</param>
+                                    <param id="1" name="Value">pergMedio.GetData(str(sortMedio.At(perguntaAtual -numPergFacil + UtilizouPular -1)), 5)</param>
+                                </action>
+                                <action id="1" name="Change text" sid="6390853675300193" type="radboxResp">
+                                    <param id="0" name="Text of the line:">pergMedio.GetData(str(sortMedio.At(perguntaAtual - numPergFacil + UtilizouPular - 1)), sortRespostas.At(0))</param>
+                                    <param id="1" name="Set the ID of line:">0</param>
+                                </action>
+                                <action id="1" name="Change text" sid="6582010181230348" type="radboxResp">
+                                    <param id="0" name="Text of the line:">pergMedio.GetData(str(sortMedio.At(perguntaAtual - numPergFacil + UtilizouPular - 1)), sortRespostas.At(1))</param>
+                                    <param id="1" name="Set the ID of line:">1</param>
+                                </action>
+                                <action id="1" name="Change text" sid="4059983976045567" type="radboxResp">
+                                    <param id="0" name="Text of the line:">pergMedio.GetData(str(sortMedio.At(perguntaAtual - numPergFacil + UtilizouPular - 1)), sortRespostas.At(2))</param>
+                                    <param id="1" name="Set the ID of line:">2</param>
+                                </action>
+                                <action id="1" name="Change text" sid="6747189997548677" type="radboxResp">
+                                    <param id="0" name="Text of the line:">pergMedio.GetData(str(sortMedio.At(perguntaAtual - numPergFacil + UtilizouPular - 1)), sortRespostas.At(3))</param>
+                                    <param id="1" name="Set the ID of line:">3</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="9927652784964151" type="System">
+                                    <param id="0" name="Variable">RespCorreta</param>
+                                    <param id="1" name="Value">pergMedio.GetData(str(sortMedio.At(perguntaAtual - numPergFacil + UtilizouPular -1)), 1)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="5460250260955135" type="System">
+                                    <param id="0" name="Variable">txtRespErr1</param>
+                                    <param id="1" name="Value">pergMedio.GetData(str(sortMedio.At(perguntaAtual -numPergFacil + UtilizouPular -1)), sort5050.At(0))</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="4136250085784164" type="System">
+                                    <param id="0" name="Variable">txtRespErr2</param>
+                                    <param id="1" name="Value">pergMedio.GetData(str(sortMedio.At(perguntaAtual -numPergFacil + UtilizouPular -1)), sort5050.At(1))</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="558701248771519" type="System">
+                                    <param id="0" name="Variable">Pergunta</param>
+                                    <param id="1" name="Value">&quot;&apos;&quot; &amp; replace(pergMedio.GetData(str(sortMedio.At(perguntaAtual -numPergFacil + UtilizouPular -1)), 0), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&apos;&quot; &amp; replace(RespCorreta, &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&apos;&quot; &amp; sortMedio.At(perguntaAtual -numPergFacil + UtilizouPular -1) - 1 &amp; &quot;&apos;,&apos;&quot; &amp; replace(pergMedio.GetData(str(sortMedio.At(perguntaAtual - numPergFacil + UtilizouPular - 1)), sortRespostas.At(0)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergMedio.GetData(str(sortMedio.At(perguntaAtual - numPergFacil + UtilizouPular - 1)), sortRespostas.At(1)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergMedio.GetData(str(sortMedio.At(perguntaAtual - numPergFacil + UtilizouPular - 1)), sortRespostas.At(2)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergMedio.GetData(str(sortMedio.At(perguntaAtual - numPergFacil + UtilizouPular - 1)), sortRespostas.At(3)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&quot; </param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="7685576690831081">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="4283914800415246" type="System">
+                                    <param id="0" name="First value">perguntaAtual</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">numPergFacil +numPergMedio</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="9404596942253713" type="System">
+                                    <param id="0" name="First value">perguntaAtual</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Second value">numPergFacil +numPergMedio +numPergDificil</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="906055105369440" type="System">
+                                    <param id="0" name="Variable">infoNivel</param>
+                                    <param id="1" name="Value">&quot;&apos;&quot; &amp; pergDificil.GetData(&quot;numero&quot;, 1) &amp; &quot;&apos;,3,&apos;Nível Difícil&apos;&quot;</param>
+                                </action>
+                                <action id="0" name="Set text" sid="6450203779535799" type="txtPergunta">
+                                    <param id="0" name="Text">pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil -numPergMedio + UtilizouPular -1)), 0)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="4005613122097598" type="System">
+                                    <param id="0" name="Variable">txtDica</param>
+                                    <param id="1" name="Value">pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil -numPergMedio + UtilizouPular -1)), 5)</param>
+                                </action>
+                                <action id="1" name="Change text" sid="1355748880487436" type="radboxResp">
+                                    <param id="0" name="Text of the line:">pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil - numPergMedio + UtilizouPular -1)), sortRespostas.At(0))</param>
+                                    <param id="1" name="Set the ID of line:">0</param>
+                                </action>
+                                <action id="1" name="Change text" sid="5620379521866979" type="radboxResp">
+                                    <param id="0" name="Text of the line:">pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil - numPergMedio + UtilizouPular -1)), sortRespostas.At(1))</param>
+                                    <param id="1" name="Set the ID of line:">1</param>
+                                </action>
+                                <action id="1" name="Change text" sid="6588513916307021" type="radboxResp">
+                                    <param id="0" name="Text of the line:">pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil - numPergMedio + UtilizouPular -1)), sortRespostas.At(2))</param>
+                                    <param id="1" name="Set the ID of line:">2</param>
+                                </action>
+                                <action id="1" name="Change text" sid="5939872185397124" type="radboxResp">
+                                    <param id="0" name="Text of the line:">pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil - numPergMedio + UtilizouPular -1)), sortRespostas.At(3))</param>
+                                    <param id="1" name="Set the ID of line:">3</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="7883640398078361" type="System">
+                                    <param id="0" name="Variable">RespCorreta</param>
+                                    <param id="1" name="Value">pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil -numPergMedio + UtilizouPular -1)), 1)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="7901484731423527" type="System">
+                                    <param id="0" name="Variable">txtRespErr1</param>
+                                    <param id="1" name="Value">pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil -numPergMedio + UtilizouPular -1)), sort5050.At(0))</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="4592430418818746" type="System">
+                                    <param id="0" name="Variable">txtRespErr2</param>
+                                    <param id="1" name="Value">pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil -numPergMedio + UtilizouPular -1)), sort5050.At(1))</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="103946417803621" type="System">
+                                    <param id="0" name="Variable">Pergunta</param>
+                                    <param id="1" name="Value">&quot;&apos;&quot; &amp; replace(pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil -numPergMedio + UtilizouPular -1)), 0), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&apos;&quot; &amp; replace(RespCorreta, &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&apos;&quot; &amp; sortDificil.At(perguntaAtual -numPergFacil -numPergMedio + UtilizouPular -1) - 1 &amp; &quot;&apos;,&apos;&quot; &amp; replace(pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil - numPergMedio + UtilizouPular -1)), sortRespostas.At(0)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil - numPergMedio + UtilizouPular -1)), sortRespostas.At(1)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil - numPergMedio + UtilizouPular -1)), sortRespostas.At(2)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil - numPergMedio + UtilizouPular -1)), sortRespostas.At(3)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&quot; </param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="4803676764000646">
+                            <conditions>
+                                <condition id="-15" name="Is group active" sid="6795188716146286" type="System">
+                                    <param id="0" name="Group name">&quot;montaPerg&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-12" name="Set group active" sid="5371991512145447" type="System">
+                                    <param id="0" name="Group name">&quot;montaPerg&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="5538108785921915" title="RegrasJogo">
+            <sub-events>
+                <comment>Verifica se o usuário utilizou o 5050 nesta pergunta.&#x0D;&#x0A;Isso serve para quando o usuário utilizar o 5050, errar, e então as alternativas excluídas ainda estarão lá.</comment>
+                <event-block sid="3372567983075992">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="9771512558650648" type="System">
+                            <param id="0" name="First value">Utilizou5050</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">1</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="4032124110695913" type="System">
+                            <param id="0" name="First value">Pergunta5050Utilizado</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">perguntaAtual</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block any="1" sid="264482561394357">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="3428512204066527" type="System">
+                                    <param id="0" name="First value">radboxResp.getLabel(0)</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">txtRespErr1</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="1161520140632452" type="System">
+                                    <param id="0" name="First value">radboxResp.getLabel(0)</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">txtRespErr2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="2" name="Disable a line" sid="9510719512467236" type="radboxResp">
+                                    <param id="0" name="Set the ID of line:">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block any="1" sid="9446666907213324">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="8707996802317563" type="System">
+                                    <param id="0" name="First value">radboxResp.getLabel(1)</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">txtRespErr1</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="7210539620171933" type="System">
+                                    <param id="0" name="First value">radboxResp.getLabel(1)</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">txtRespErr2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="2" name="Disable a line" sid="970289273163623" type="radboxResp">
+                                    <param id="0" name="Set the ID of line:">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block any="1" sid="716560646670218">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="4631605647379537" type="System">
+                                    <param id="0" name="First value">radboxResp.getLabel(2)</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">txtRespErr1</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="3922235572395921" type="System">
+                                    <param id="0" name="First value">radboxResp.getLabel(2)</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">txtRespErr2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="2" name="Disable a line" sid="6648419545337932" type="radboxResp">
+                                    <param id="0" name="Set the ID of line:">2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block any="1" sid="2404184696674422">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="305164619293431" type="System">
+                                    <param id="0" name="First value">radboxResp.getLabel(3)</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">txtRespErr1</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="5712556242551386" type="System">
+                                    <param id="0" name="First value">radboxResp.getLabel(3)</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">txtRespErr2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="2" name="Disable a line" sid="7256153453161701" type="radboxResp">
+                                    <param id="0" name="Set the ID of line:">3</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="4335913846612678">
+                    <conditions>
+                        <condition id="0" name="is checked?" sid="4386585441820452" type="radboxResp" />
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="898307855224308" type="radboxResp">
+                            <param id="0" name="Instance variable">respSelec</param>
+                            <param id="1" name="Value">radboxResp.getLabel(radboxResp.getIDChecked)</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="603163166493192" type="System">
+                            <param id="0" name="Variable">RespostaEscolhida</param>
+                            <param id="1" name="Value">replace(radboxResp.getLabel(radboxResp.getIDChecked), &quot;&apos;&quot;, &quot;\&apos;&quot;)</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <comment>Evento de click do botao de confirmacao, verificacao se resposta correta ou nao</comment>
+                        <event-block sid="4873706833119553">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="6466681127877649" type="System">
+                                    <param id="0" name="Variable">clicouProx</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-12" name="Set group active" sid="2004267207251406" type="System">
+                                    <param id="0" name="Group name">&quot;RegrasJogo&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="4384475332649419" type="System">
+                                    <param id="0" name="Variable">clicouProx</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <comment>resposta correta</comment>
+                                <event-block sid="6244175725159244">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="5519135818466721" type="radboxResp">
+                                            <param id="0" name="Instance variable">respSelec</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">respCorreta</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Add to" sid="5997317697833505" type="System">
+                                            <param id="0" name="Variable">perguntaAtual</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action id="-10" name="Add to" sid="156551547510672" type="System">
+                                            <param id="0" name="Variable">acertos</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="143317445143447" type="System">
+                                            <param id="0" name="Variable">SendJS</param>
+                                            <param id="1" name="Value">Pergunta &amp; &quot;&apos;&quot; &amp; RespostaEscolhida &amp; &quot;&apos;,&apos;true&apos;,&quot; &amp; infoNivel</param>
+                                        </action>
+                                        <action id="0" name="Execute" sid="629332024447433" type="CallJS">
+                                            <param id="0" name="Value">&quot;sendData(&quot; &amp; SendJS &amp; &quot;)&quot;</param>
+                                        </action>
+                                        <action id="0" name="Play" sid="9317320109706758" type="Audio">
+                                            <param id="0" name="Audio file">resposta_certa</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">0</param>
+                                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="380580585348608" type="btnDica">
+                                            <param id="0" name="X">btnDica.X*(-1)</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="3303838583413557" type="btn5050">
+                                            <param id="0" name="X">btn5050.X*(-1)</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="422742162322633" type="btnPular">
+                                            <param id="0" name="X">btnPular.X*(-1)</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="4512699036409482" type="btnConfirmar">
+                                            <param id="0" name="X">btnConfirmar.X*(-1)</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="1990433986730835" type="btnMenu">
+                                            <param id="0" name="X">btnMenu.X*(-1)</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="5947923954883435" type="radboxResp" />
+                                        <action id="-4" name="Set layer visible" sid="7593535048101876" type="System">
+                                            <param id="0" name="Layer">&quot;LayPrinc&quot;</param>
+                                            <param id="1" name="Visibility">0</param>
+                                        </action>
+                                        <action id="-15" name="Set visible" sid="9263962035768622" type="respErrada">
+                                            <param id="0" name="Visibility">0</param>
+                                        </action>
+                                        <action id="-4" name="Set layer visible" sid="3656425305083497" type="System">
+                                            <param id="0" name="Layer">&quot;LayMsg&quot;</param>
+                                            <param id="1" name="Visibility">1</param>
+                                        </action>
+                                        <action id="-4" name="Set layer visible" sid="2018968900824588" type="System">
+                                            <param id="0" name="Layer">&quot;LayBotoes&quot;</param>
+                                            <param id="1" name="Visibility">0</param>
+                                        </action>
+                                        <action id="-16" name="Wait" sid="4794438210772392" type="System">
+                                            <param id="0" name="Seconds">2.0</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="6707462143764599" type="btnDica">
+                                            <param id="0" name="X">btnDica.X*(-1)</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="104121760943488" type="btn5050">
+                                            <param id="0" name="X">btn5050.X*(-1)</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="3572426185811759" type="btnPular">
+                                            <param id="0" name="X">btnPular.X*(-1)</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="4761201066759143" type="btnConfirmar">
+                                            <param id="0" name="X">btnConfirmar.X*(-1)</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="2278811497881517" type="btnMenu">
+                                            <param id="0" name="X">btnMenu.X*(-1)</param>
+                                        </action>
+                                        <action id="-4" name="Set layer visible" sid="1061180781649547" type="System">
+                                            <param id="0" name="Layer">&quot;LayMsg&quot;</param>
+                                            <param id="1" name="Visibility">0</param>
+                                        </action>
+                                        <action id="-4" name="Set layer visible" sid="9115241342552715" type="System">
+                                            <param id="0" name="Layer">&quot;LayBotoes&quot;</param>
+                                            <param id="1" name="Visibility">1</param>
+                                        </action>
+                                        <action id="-15" name="Set visible" sid="7528538274695682" type="respErrada">
+                                            <param id="0" name="Visibility">1</param>
+                                        </action>
+                                        <action id="-3" name="Create object" sid="2116751168341453" type="System">
+                                            <param id="0" name="Object to create">radboxResp</param>
+                                            <param id="1" name="Layer">&quot;LayPrinc&quot;</param>
+                                            <param id="2" name="X">20</param>
+                                            <param id="3" name="Y">334</param>
+                                        </action>
+                                        <action id="-7" name="Set size" sid="8516556683195133" type="radboxResp">
+                                            <param id="0" name="Width">480</param>
+                                            <param id="1" name="Height">192</param>
+                                        </action>
+                                        <action id="6" name="Enable all lines" sid="1527839662980897" type="radboxResp" />
+                                        <action id="9" name="Uncheck all lines" sid="6620593497215104" type="radboxResp" />
+                                        <action id="0" name="Set text" sid="3456903983178656" type="txtPontuacao">
+                                            <param id="0" name="Text">&quot;Pontuação - Acertos: &quot;&amp; acertos &amp; &quot; Erros: &quot; &amp; erros</param>
+                                        </action>
+                                        <action id="-4" name="Set layer visible" sid="1069215677037841" type="System">
+                                            <param id="0" name="Layer">&quot;LayPrinc&quot;</param>
+                                            <param id="1" name="Visibility">1</param>
+                                        </action>
+                                        <action id="-12" name="Set group active" sid="1849677290382862" type="System">
+                                            <param id="0" name="Group name">&quot;montaPerg&quot;</param>
+                                            <param id="1" name="State">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>resposta incorreta</comment>
+                                <event-block sid="5390175693170527">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="6468610076343416" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Add to" sid="697374059353471" type="System">
+                                            <param id="0" name="Variable">erros</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action id="0" name="Play" sid="3410489539150734" type="Audio">
+                                            <param id="0" name="Audio file">resposta_errada</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">0</param>
+                                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="820598996316791" type="System">
+                                            <param id="0" name="Variable">SendJS</param>
+                                            <param id="1" name="Value">Pergunta &amp; &quot;&apos;&quot; &amp; RespostaEscolhida &amp; &quot;&apos;,&apos;false&apos;,&quot; &amp; infoNivel</param>
+                                        </action>
+                                        <action id="0" name="Execute" sid="300891655773712" type="CallJS">
+                                            <param id="0" name="Value">&quot;sendData(&quot; &amp; SendJS &amp; &quot;)&quot;</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="5595066793287549" type="btnDica">
+                                            <param id="0" name="X">btnDica.X*(-1)</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="3916380474173515" type="btn5050">
+                                            <param id="0" name="X">btn5050.X*(-1)</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="8661053809418777" type="btnPular">
+                                            <param id="0" name="X">btnPular.X*(-1)</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="164413543013163" type="btnConfirmar">
+                                            <param id="0" name="X">btnConfirmar.X*(-1)</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="4553961369199989" type="btnMenu">
+                                            <param id="0" name="X">btnMenu.X*(-1)</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="6192605800712563" type="radboxResp" />
+                                        <action id="-4" name="Set layer visible" sid="3075539060835113" type="System">
+                                            <param id="0" name="Layer">&quot;LayPrinc&quot;</param>
+                                            <param id="1" name="Visibility">0</param>
+                                        </action>
+                                        <action id="-15" name="Set visible" sid="8516195411802008" type="respCerta">
+                                            <param id="0" name="Visibility">0</param>
+                                        </action>
+                                        <action id="-4" name="Set layer visible" sid="4754238373795096" type="System">
+                                            <param id="0" name="Layer">&quot;LayMsg&quot;</param>
+                                            <param id="1" name="Visibility">1</param>
+                                        </action>
+                                        <action id="-4" name="Set layer visible" sid="4211389124404226" type="System">
+                                            <param id="0" name="Layer">&quot;LayBotoes&quot;</param>
+                                            <param id="1" name="Visibility">0</param>
+                                        </action>
+                                        <action id="-16" name="Wait" sid="6864785927300965" type="System">
+                                            <param id="0" name="Seconds">2.0</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="7629567278687131" type="btnDica">
+                                            <param id="0" name="X">btnDica.X*(-1)</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="3938351071347592" type="btn5050">
+                                            <param id="0" name="X">btn5050.X*(-1)</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="51099713058008" type="btnPular">
+                                            <param id="0" name="X">btnPular.X*(-1)</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="4050329636339498" type="btnConfirmar">
+                                            <param id="0" name="X">btnConfirmar.X*(-1)</param>
+                                        </action>
+                                        <action id="-1" name="Set X" sid="9961074398573944" type="btnMenu">
+                                            <param id="0" name="X">btnMenu.X*(-1)</param>
+                                        </action>
+                                        <action id="-4" name="Set layer visible" sid="8684124384766184" type="System">
+                                            <param id="0" name="Layer">&quot;LayBotoes&quot;</param>
+                                            <param id="1" name="Visibility">1</param>
+                                        </action>
+                                        <action id="-4" name="Set layer visible" sid="8090970573159216" type="System">
+                                            <param id="0" name="Layer">&quot;LayMsg&quot;</param>
+                                            <param id="1" name="Visibility">0</param>
+                                        </action>
+                                        <action id="-15" name="Set visible" sid="6352776493275258" type="respCerta">
+                                            <param id="0" name="Visibility">1</param>
+                                        </action>
+                                        <action id="-3" name="Create object" sid="5286502089426162" type="System">
+                                            <param id="0" name="Object to create">radboxResp</param>
+                                            <param id="1" name="Layer">&quot;LayPrinc&quot;</param>
+                                            <param id="2" name="X">20</param>
+                                            <param id="3" name="Y">334</param>
+                                        </action>
+                                        <action id="-7" name="Set size" sid="5259370220657115" type="radboxResp">
+                                            <param id="0" name="Width">480</param>
+                                            <param id="1" name="Height">192</param>
+                                        </action>
+                                        <action id="6" name="Enable all lines" sid="8143923595303731" type="radboxResp" />
+                                        <action id="9" name="Uncheck all lines" sid="4434887462568116" type="radboxResp" />
+                                        <action id="0" name="Set text" sid="1423829303485405" type="txtPontuacao">
+                                            <param id="0" name="Text">&quot;Pontuação - Acertos: &quot;&amp; acertos &amp; &quot; Erros: &quot; &amp; erros</param>
+                                        </action>
+                                        <action id="-4" name="Set layer visible" sid="764907488693998" type="System">
+                                            <param id="0" name="Layer">&quot;LayPrinc&quot;</param>
+                                            <param id="1" name="Visibility">1</param>
+                                        </action>
+                                        <action id="-12" name="Set group active" sid="542005089309295" type="System">
+                                            <param id="0" name="Group name">&quot;RegrasJogo&quot;</param>
+                                            <param id="1" name="State">1</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="7175306135173242">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="1309674156245188" type="System">
+                                                    <param id="0" name="First value">perguntaAtual</param>
+                                                    <param id="1" name="Comparison">3</param>
+                                                    <param id="2" name="Second value">numPergFacil</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="1" name="Change text" sid="1732296440547783" type="radboxResp">
+                                                    <param id="0" name="Text of the line:">pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(0))</param>
+                                                    <param id="1" name="Set the ID of line:">0</param>
+                                                </action>
+                                                <action id="1" name="Change text" sid="8124784829307018" type="radboxResp">
+                                                    <param id="0" name="Text of the line:">pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(1))</param>
+                                                    <param id="1" name="Set the ID of line:">1</param>
+                                                </action>
+                                                <action id="1" name="Change text" sid="6201217345412119" type="radboxResp">
+                                                    <param id="0" name="Text of the line:">pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(2))</param>
+                                                    <param id="1" name="Set the ID of line:">2</param>
+                                                </action>
+                                                <action id="1" name="Change text" sid="9601908067211313" type="radboxResp">
+                                                    <param id="0" name="Text of the line:">pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(3))</param>
+                                                    <param id="1" name="Set the ID of line:">3</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="9811291140025228">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="5944302510326614" type="System">
+                                                    <param id="0" name="First value">perguntaAtual</param>
+                                                    <param id="1" name="Comparison">4</param>
+                                                    <param id="2" name="Second value">numPergFacil</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="5855672588897581" type="System">
+                                                    <param id="0" name="First value">perguntaAtual</param>
+                                                    <param id="1" name="Comparison">3</param>
+                                                    <param id="2" name="Second value">numPergMedio +numPergFacil</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="1" name="Change text" sid="9768924159921462" type="radboxResp">
+                                                    <param id="0" name="Text of the line:">pergMedio.GetData(str(sortMedio.At(perguntaAtual + UtilizouPular - numPergFacil - 1)), sortRespostas.At(0))</param>
+                                                    <param id="1" name="Set the ID of line:">0</param>
+                                                </action>
+                                                <action id="1" name="Change text" sid="5308498426521382" type="radboxResp">
+                                                    <param id="0" name="Text of the line:">pergMedio.GetData(str(sortMedio.At(perguntaAtual + UtilizouPular - numPergFacil - 1)), sortRespostas.At(1))</param>
+                                                    <param id="1" name="Set the ID of line:">1</param>
+                                                </action>
+                                                <action id="1" name="Change text" sid="3409940692299593" type="radboxResp">
+                                                    <param id="0" name="Text of the line:">pergMedio.GetData(str(sortMedio.At(perguntaAtual + UtilizouPular - numPergFacil - 1)), sortRespostas.At(2))</param>
+                                                    <param id="1" name="Set the ID of line:">2</param>
+                                                </action>
+                                                <action id="1" name="Change text" sid="1008140003424831" type="radboxResp">
+                                                    <param id="0" name="Text of the line:">pergMedio.GetData(str(sortMedio.At(perguntaAtual + UtilizouPular - numPergFacil - 1)), sortRespostas.At(3))</param>
+                                                    <param id="1" name="Set the ID of line:">3</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="516538535161826">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="5099853378330712" type="System">
+                                                    <param id="0" name="First value">perguntaAtual</param>
+                                                    <param id="1" name="Comparison">4</param>
+                                                    <param id="2" name="Second value">numPergFacil +numPergMedio</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="9670604038110412" type="System">
+                                                    <param id="0" name="First value">perguntaAtual</param>
+                                                    <param id="1" name="Comparison">3</param>
+                                                    <param id="2" name="Second value">numPergFacil +numPergMedio +numPergDificil</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="1" name="Change text" sid="22220618077804" type="radboxResp">
+                                                    <param id="0" name="Text of the line:">pergDificil.GetData(str(sortDificil.At(perguntaAtual + UtilizouPular -numPergFacil - numPergMedio -1)), sortRespostas.At(0))</param>
+                                                    <param id="1" name="Set the ID of line:">0</param>
+                                                </action>
+                                                <action id="1" name="Change text" sid="2857823927174606" type="radboxResp">
+                                                    <param id="0" name="Text of the line:">pergDificil.GetData(str(sortDificil.At(perguntaAtual  + UtilizouPular -numPergFacil - numPergMedio -1)), sortRespostas.At(1))</param>
+                                                    <param id="1" name="Set the ID of line:">1</param>
+                                                </action>
+                                                <action id="1" name="Change text" sid="1381627584692007" type="radboxResp">
+                                                    <param id="0" name="Text of the line:">pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil - numPergMedio + UtilizouPular -1)), sortRespostas.At(2))</param>
+                                                    <param id="1" name="Set the ID of line:">2</param>
+                                                </action>
+                                                <action id="1" name="Change text" sid="9960856931494668" type="radboxResp">
+                                                    <param id="0" name="Text of the line:">pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil - numPergMedio  + UtilizouPular -1)), sortRespostas.At(3))</param>
+                                                    <param id="1" name="Set the ID of line:">3</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Usuário escolhe uma única vez a opção 50,50, onde duas alternativas erradas são excluídas</comment>
+                <event-block any="1" sid="6467166549055064">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="6750289629270365" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">btn5050</param>
+                        </condition>
+                        <condition id="3" name="On touched object" sid="2633191725084241" type="Touch">
+                            <param id="0" name="Object">btn5050</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="9465200595807419">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="2259047146854767" type="System">
+                                    <param id="0" name="Variable">Utilizou5050</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="8228541440218846" type="Audio">
+                                    <param id="0" name="Audio file">selecionar_botao</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="1413596007345183" type="System">
+                                    <param id="0" name="Variable">Utilizou5050</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="9754658491147788" type="System">
+                                    <param id="0" name="Variable">Pergunta5050Utilizado</param>
+                                    <param id="1" name="Value">perguntaAtual</param>
+                                </action>
+                                <action id="9" name="Uncheck all lines" sid="9334789363045376" type="radboxResp" />
+                            </actions>
+                            <sub-events>
+                                <event-block any="1" sid="2094563759356373">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="9046581119027201" type="System">
+                                            <param id="0" name="First value">radboxResp.getLabel(0)</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">txtRespErr1</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="6501415601443034" type="System">
+                                            <param id="0" name="First value">radboxResp.getLabel(0)</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">txtRespErr2</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Disable a line" sid="897179214247972" type="radboxResp">
+                                            <param id="0" name="Set the ID of line:">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block any="1" sid="7715261262982382">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="1401962752028992" type="System">
+                                            <param id="0" name="First value">radboxResp.getLabel(1)</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">txtRespErr1</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="4463163412988254" type="System">
+                                            <param id="0" name="First value">radboxResp.getLabel(1)</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">txtRespErr2</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Disable a line" sid="1441283939456211" type="radboxResp">
+                                            <param id="0" name="Set the ID of line:">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block any="1" sid="1735698583203256">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="2151178278346195" type="System">
+                                            <param id="0" name="First value">radboxResp.getLabel(2)</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">txtRespErr1</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="3944297834696341" type="System">
+                                            <param id="0" name="First value">radboxResp.getLabel(2)</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">txtRespErr2</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Disable a line" sid="4571034783108427" type="radboxResp">
+                                            <param id="0" name="Set the ID of line:">2</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block any="1" sid="1545466027538798">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="6234585901639308" type="System">
+                                            <param id="0" name="First value">radboxResp.getLabel(3)</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">txtRespErr1</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="2093841199308375" type="System">
+                                            <param id="0" name="First value">radboxResp.getLabel(3)</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">txtRespErr2</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Disable a line" sid="2624871765332791" type="radboxResp">
+                                            <param id="0" name="Set the ID of line:">3</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Usuário pula a pergunta atual. A pontuação não é acrescida, porém a pergunta avança graças ao &quot;+ UtilizouPular&quot; na hora de escolher a pergunta</comment>
+                <event-block any="1" sid="3344507042285641">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="8515503394407336" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">btnPular</param>
+                        </condition>
+                        <condition id="3" name="On touched object" sid="2545888461095295" type="Touch">
+                            <param id="0" name="Object">btnPular</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="7856966414789381">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="4507985119412568" type="System">
+                                    <param id="0" name="Variable">UtilizouPular</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="5917519364450117" type="Audio">
+                                    <param id="0" name="Audio file">selecionar_botao</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="7882629091498491" type="System">
+                                    <param id="0" name="Variable">UtilizouPular</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-12" name="Set group active" sid="5003527629076882" type="System">
+                                    <param id="0" name="Group name">&quot;montaPerg&quot;</param>
+                                    <param id="1" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Uma nova tela abre com o texto da Dica encontrado no arquivo</comment>
+                <event-block any="1" sid="6014616360741368">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="48099658726146" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">btnDica</param>
+                        </condition>
+                        <condition id="3" name="On touched object" sid="2609527883165257" type="Touch">
+                            <param id="0" name="Object">btnDica</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-1" name="Set X" sid="9000068894470909" type="XDica">
+                            <param id="0" name="X">XDica.X*(-1)</param>
+                        </action>
+                        <action id="0" name="Play" sid="3691889602564702" type="Audio">
+                            <param id="0" name="Audio file">selecionar_botao</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="8461225495609082" type="telaDica">
+                            <param id="0" name="X">telaDica.X*(-1)</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="634207935748772" type="txtDica">
+                            <param id="0" name="X">txtDica.X*(-1)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="335791150052653" type="txtDica">
+                            <param id="0" name="Text">txtDica</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="1697676447633669" type="btnDica">
+                            <param id="0" name="X">btnDica.X*(-1)</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="1257726939833107" type="btn5050">
+                            <param id="0" name="X">btn5050.X*(-1)</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="7441351533230245" type="btnPular">
+                            <param id="0" name="X">btnPular.X*(-1)</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="1420322480862342" type="btnConfirmar">
+                            <param id="0" name="X">btnConfirmar.X*(-1)</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="8334689890022011" type="btnMenu">
+                            <param id="0" name="X">btnMenu.X*(-1)</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="7779954906105278" type="System">
+                            <param id="0" name="Layer">1</param>
+                            <param id="1" name="Visibility">0</param>
+                        </action>
+                        <action id="-32" name="Set layer effect parameter" sid="8771189453976778" type="System">
+                            <param id="0" name="Layer">0</param>
+                            <param id="1" name="Effect">&quot;BlurHorizontal&quot;</param>
+                            <param id="2" name="Parameter index">0</param>
+                            <param id="3" name="Value">100</param>
+                        </action>
+                        <action id="-32" name="Set layer effect parameter" sid="8820513524929106" type="System">
+                            <param id="0" name="Layer">0</param>
+                            <param id="1" name="Effect">&quot;BlurVertical&quot;</param>
+                            <param id="2" name="Parameter index">0</param>
+                            <param id="3" name="Value">100</param>
+                        </action>
+                        <action id="-32" name="Set layer effect parameter" sid="1578894827671705" type="System">
+                            <param id="0" name="Layer">1</param>
+                            <param id="1" name="Effect">&quot;BlurHorizontal&quot;</param>
+                            <param id="2" name="Parameter index">0</param>
+                            <param id="3" name="Value">100</param>
+                        </action>
+                        <action id="-32" name="Set layer effect parameter" sid="5486186033095641" type="System">
+                            <param id="0" name="Layer">1</param>
+                            <param id="1" name="Effect">&quot;BlurVertical&quot;</param>
+                            <param id="2" name="Parameter index">0</param>
+                            <param id="3" name="Value">100</param>
+                        </action>
+                        <action id="-32" name="Set layer effect parameter" sid="3189549078989598" type="System">
+                            <param id="0" name="Layer">2</param>
+                            <param id="1" name="Effect">&quot;BlurHorizontal&quot;</param>
+                            <param id="2" name="Parameter index">0</param>
+                            <param id="3" name="Value">100</param>
+                        </action>
+                        <action id="-32" name="Set layer effect parameter" sid="4614191398258951" type="System">
+                            <param id="0" name="Layer">2</param>
+                            <param id="1" name="Effect">&quot;BlurVertical&quot;</param>
+                            <param id="2" name="Parameter index">0</param>
+                            <param id="3" name="Value">100</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block any="1" sid="2553310301234112">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="5710072536428617" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">XDica</param>
+                        </condition>
+                        <condition id="3" name="On touched object" sid="8653892950832739" type="Touch">
+                            <param id="0" name="Object">XDica</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-1" name="Set X" sid="9606322842706397" type="XDica">
+                            <param id="0" name="X">XDica.X*(-1)</param>
+                        </action>
+                        <action id="0" name="Play" sid="2419118064616461" type="Audio">
+                            <param id="0" name="Audio file">xdica</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="7177534291389268" type="telaDica">
+                            <param id="0" name="X">telaDica.X*(-1)</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="7503114151766782" type="txtDica">
+                            <param id="0" name="X">txtDica.X*(-1)</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="2553139533966367" type="btnDica">
+                            <param id="0" name="X">btnDica.X*(-1)</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="6763031191426525" type="btn5050">
+                            <param id="0" name="X">btn5050.X*(-1)</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="579966701359767" type="btnPular">
+                            <param id="0" name="X">btnPular.X*(-1)</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="3968226776020564" type="btnConfirmar">
+                            <param id="0" name="X">btnConfirmar.X*(-1)</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="849331474490273" type="btnMenu">
+                            <param id="0" name="X">btnMenu.X*(-1)</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="497903415104454" type="System">
+                            <param id="0" name="Layer">1</param>
+                            <param id="1" name="Visibility">1</param>
+                        </action>
+                        <action id="-32" name="Set layer effect parameter" sid="4382798619204683" type="System">
+                            <param id="0" name="Layer">0</param>
+                            <param id="1" name="Effect">&quot;BlurHorizontal&quot;</param>
+                            <param id="2" name="Parameter index">0</param>
+                            <param id="3" name="Value">0</param>
+                        </action>
+                        <action id="-32" name="Set layer effect parameter" sid="291237899604082" type="System">
+                            <param id="0" name="Layer">0</param>
+                            <param id="1" name="Effect">&quot;BlurVertical&quot;</param>
+                            <param id="2" name="Parameter index">0</param>
+                            <param id="3" name="Value">0</param>
+                        </action>
+                        <action id="-32" name="Set layer effect parameter" sid="7776514099033132" type="System">
+                            <param id="0" name="Layer">1</param>
+                            <param id="1" name="Effect">&quot;BlurHorizontal&quot;</param>
+                            <param id="2" name="Parameter index">0</param>
+                            <param id="3" name="Value">0</param>
+                        </action>
+                        <action id="-32" name="Set layer effect parameter" sid="8085224068808588" type="System">
+                            <param id="0" name="Layer">1</param>
+                            <param id="1" name="Effect">&quot;BlurVertical&quot;</param>
+                            <param id="2" name="Parameter index">0</param>
+                            <param id="3" name="Value">0</param>
+                        </action>
+                        <action id="-32" name="Set layer effect parameter" sid="2077114964973286" type="System">
+                            <param id="0" name="Layer">2</param>
+                            <param id="1" name="Effect">&quot;BlurHorizontal&quot;</param>
+                            <param id="2" name="Parameter index">0</param>
+                            <param id="3" name="Value">0</param>
+                        </action>
+                        <action id="-32" name="Set layer effect parameter" sid="2320329192689106" type="System">
+                            <param id="0" name="Layer">2</param>
+                            <param id="1" name="Effect">&quot;BlurVertical&quot;</param>
+                            <param id="2" name="Parameter index">0</param>
+                            <param id="3" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="2487953375927797" title="contrMouse">
+            <sub-events>
+                <event-block sid="9577468471177513">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="3925228966151588" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">som</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="5241228130352178">
+                            <conditions>
+                                <condition id="2" name="Is playing" sid="978889359631273" type="som">
+                                    <param id="0" name="Animation">&quot;unmute&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="2627522943442779" type="som">
+                                    <param id="0" name="Animation">&quot;mute&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="10" name="Set master volume" sid="7538413668032087" type="Audio">
+                                    <param id="0" name="dB">-100</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="3124079287995931" type="System">
+                                    <param id="0" name="Variable">controleMudo</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="3539539892509312">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="8431843805575763" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="1515792965216236" type="som">
+                                    <param id="0" name="Animation">&quot;unmute&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="10" name="Set master volume" sid="5732750150044304" type="Audio">
+                                    <param id="0" name="dB">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="8404796056569053" type="System">
+                                    <param id="0" name="Variable">controleMudo</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Teclas de atalho que pressionadas marcam a opção correspondente e falam a frase correspondente</comment>
+                <event-group description="" sid="5659650333664271" title="atalhosTeclado">
+                    <sub-events>
+                        <event-block any="1" sid="9569577656212042">
+                            <conditions>
+                                <condition id="3" name="On key released" sid="3371111151054344" type="Keyboard">
+                                    <param id="0" name="Key">65</param>
+                                </condition>
+                                <condition id="3" name="On key released" sid="9189324958424126" type="Keyboard">
+                                    <param id="0" name="Key">49</param>
+                                </condition>
+                                <condition id="3" name="On key released" sid="9813322743583901" type="Keyboard">
+                                    <param id="0" name="Key">97</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Check a line" sid="3369815119898173" type="radboxResp">
+                                    <param id="0" name="Set the ID of line:">0</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="6358970022819418">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="2603334934497804" type="System">
+                                            <param id="0" name="First value">Utilizou5050</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">1</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="9227942019589527" type="System">
+                                            <param id="0" name="First value">Pergunta5050Utilizado</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">perguntaAtual</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block any="1" sid="8864355212557253">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="7568347171243305" type="System">
+                                                    <param id="0" name="First value">radboxResp.getLabel(0)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">txtRespErr1</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="3891330805630478" type="System">
+                                                    <param id="0" name="First value">radboxResp.getLabel(0)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">txtRespErr2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="5" name="Uncheck a line" sid="6880376225479115" type="radboxResp">
+                                                    <param id="0" name="Set the ID of line:">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block any="1" sid="7554097903859821">
+                            <conditions>
+                                <condition id="3" name="On key released" sid="4401302530432554" type="Keyboard">
+                                    <param id="0" name="Key">83</param>
+                                </condition>
+                                <condition id="3" name="On key released" sid="2502843043351287" type="Keyboard">
+                                    <param id="0" name="Key">50</param>
+                                </condition>
+                                <condition id="3" name="On key released" sid="5121939480002792" type="Keyboard">
+                                    <param id="0" name="Key">98</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Check a line" sid="9827695162664198" type="radboxResp">
+                                    <param id="0" name="Set the ID of line:">1</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="4732519595199286">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="1981396936544847" type="System">
+                                            <param id="0" name="First value">Utilizou5050</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">1</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="2674976685084101" type="System">
+                                            <param id="0" name="First value">Pergunta5050Utilizado</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">perguntaAtual</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block any="1" sid="9677321484251266">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="1887253359219144" type="System">
+                                                    <param id="0" name="First value">radboxResp.getLabel(1)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">txtRespErr1</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="5374891984317873" type="System">
+                                                    <param id="0" name="First value">radboxResp.getLabel(1)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">txtRespErr2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="5" name="Uncheck a line" sid="6430372151144182" type="radboxResp">
+                                                    <param id="0" name="Set the ID of line:">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block any="1" sid="2548512906024397">
+                            <conditions>
+                                <condition id="3" name="On key released" sid="1402422924993937" type="Keyboard">
+                                    <param id="0" name="Key">68</param>
+                                </condition>
+                                <condition id="3" name="On key released" sid="184957905122073" type="Keyboard">
+                                    <param id="0" name="Key">51</param>
+                                </condition>
+                                <condition id="3" name="On key released" sid="6486413860948483" type="Keyboard">
+                                    <param id="0" name="Key">99</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Check a line" sid="9688398877072691" type="radboxResp">
+                                    <param id="0" name="Set the ID of line:">2</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="3269874506539298">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="3906937896217556" type="System">
+                                            <param id="0" name="First value">Utilizou5050</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">1</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="7914136263548929" type="System">
+                                            <param id="0" name="First value">Pergunta5050Utilizado</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">perguntaAtual</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block any="1" sid="894410006333674">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="3403344790219523" type="System">
+                                                    <param id="0" name="First value">radboxResp.getLabel(2)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">txtRespErr1</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="3493344255127502" type="System">
+                                                    <param id="0" name="First value">radboxResp.getLabel(2)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">txtRespErr2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="5" name="Uncheck a line" sid="2436883936284439" type="radboxResp">
+                                                    <param id="0" name="Set the ID of line:">2</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block any="1" sid="9450806727266032">
+                            <conditions>
+                                <condition id="3" name="On key released" sid="8263583049381088" type="Keyboard">
+                                    <param id="0" name="Key">70</param>
+                                </condition>
+                                <condition id="3" name="On key released" sid="5932349649630938" type="Keyboard">
+                                    <param id="0" name="Key">52</param>
+                                </condition>
+                                <condition id="3" name="On key released" sid="3378654567522058" type="Keyboard">
+                                    <param id="0" name="Key">100</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Check a line" sid="4219879261208603" type="radboxResp">
+                                    <param id="0" name="Set the ID of line:">3</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="3407031433638978">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="8986920674249114" type="System">
+                                            <param id="0" name="First value">Utilizou5050</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">1</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="664424867990474" type="System">
+                                            <param id="0" name="First value">Pergunta5050Utilizado</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">perguntaAtual</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block any="1" sid="4633343338328331">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="553634043922456" type="System">
+                                                    <param id="0" name="First value">radboxResp.getLabel(3)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">txtRespErr1</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="3238114300828918" type="System">
+                                                    <param id="0" name="First value">radboxResp.getLabel(3)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">txtRespErr2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="5" name="Uncheck a line" sid="2064909833025277" type="radboxResp">
+                                                    <param id="0" name="Set the ID of line:">3</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="5967446648369992">
+                            <conditions>
+                                <condition id="0" name="On key pressed" sid="4240194833237464" type="Keyboard">
+                                    <param id="0" name="Key">13</param>
+                                </condition>
+                                <condition id="0" name="is checked?" sid="5045862412131962" type="radboxResp" />
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="290885026496278" type="System">
+                                    <param id="0" name="Variable">clicouProx</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="0" name="Play" sid="8143780853759906" type="Audio">
+                                    <param id="0" name="Audio file">selecionar_botao</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="7870359539103229" title="atribCSS">
+                    <sub-events>
+                        <event-block sid="8041457979970586">
+                            <conditions>
+                                <condition id="7" name="Cursor is over object" sid="2798216308288458" type="Mouse">
+                                    <param id="0" name="Object">btnConfirmar</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="5666021865283324">
+                                    <conditions>
+                                        <condition id="0" name="is checked?" sid="6834578345037969" type="radboxResp" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="4415728748784728" type="btnConfirmar">
+                                            <param id="0" name="Animation">&quot;Ativado&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="7993697225622393" type="System">
+                                            <param id="0" name="Variable">volume</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                        <action id="0" name="Set cursor style" sid="4004521753622413" type="Mouse">
+                                            <param id="0" name="Cursor style">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="2183508401503907">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="1823038138133242" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="3088401566425594" type="System">
+                                            <param id="0" name="Variable">volume</param>
+                                            <param id="1" name="Value">-100</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="7744033906593016">
+                            <conditions>
+                                <condition id="7" name="Cursor is over object" sid="6200068077948556" type="Mouse">
+                                    <param id="0" name="Object">btnPular</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="3361999122559436">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="1960386091072407" type="System">
+                                            <param id="0" name="Variable">UtilizouPular</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="8667727586843546" type="btnPular">
+                                            <param id="0" name="Animation">&quot;Ativado&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="2427192743389769" type="System">
+                                            <param id="0" name="Variable">volume</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                        <action id="0" name="Set cursor style" sid="1565448437755456" type="Mouse">
+                                            <param id="0" name="Cursor style">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="3176903194832235">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="3464003663047008" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="9119402963906417" type="System">
+                                            <param id="0" name="Variable">volume</param>
+                                            <param id="1" name="Value">-100</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="6656173857317776">
+                            <conditions>
+                                <condition id="7" name="Cursor is over object" sid="569560998615453" type="Mouse">
+                                    <param id="0" name="Object">btn5050</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="5245888176319987">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="8709420085284728" type="System">
+                                            <param id="0" name="Variable">Utilizou5050</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="8831504770179156" type="btn5050">
+                                            <param id="0" name="Animation">&quot;Ativado&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                        <action id="0" name="Set cursor style" sid="8578799021428513" type="Mouse">
+                                            <param id="0" name="Cursor style">1</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="651608568362674" type="System">
+                                            <param id="0" name="Variable">volume</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="783862289211371">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="7937458458825071" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="2897980162016481" type="System">
+                                            <param id="0" name="Variable">volume</param>
+                                            <param id="1" name="Value">-100</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="7118444310399356">
+                            <conditions>
+                                <condition id="7" name="Cursor is over object" sid="2517252215352638" type="Mouse">
+                                    <param id="0" name="Object">btnDica</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="1878440595058114" type="System">
+                                    <param id="0" name="Variable">volume</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="6602510064136078" type="btnDica">
+                                    <param id="0" name="Animation">&quot;Ativado&quot;</param>
+                                    <param id="1" name="From">0</param>
+                                </action>
+                                <action id="0" name="Set cursor style" sid="4870642053561959" type="Mouse">
+                                    <param id="0" name="Cursor style">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="212485569003423">
+                            <conditions>
+                                <condition id="7" name="Cursor is over object" sid="3654011886399013" type="Mouse">
+                                    <param id="0" name="Object">btnMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="3598085880365643" type="System">
+                                    <param id="0" name="Variable">volume</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="1481554742848586" type="btnMenu">
+                                    <param id="0" name="Animation">&quot;Ativado&quot;</param>
+                                    <param id="1" name="From">0</param>
+                                </action>
+                                <action id="0" name="Set cursor style" sid="2980265030304239" type="Mouse">
+                                    <param id="0" name="Cursor style">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="5666922354942137">
+                            <conditions>
+                                <condition id="7" name="Cursor is over object" sid="6188320865268222" type="Mouse">
+                                    <param id="0" name="Object">XDica</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="9874657211641909" type="System">
+                                    <param id="0" name="Variable">volume</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="6751079973768302" type="XDica">
+                                    <param id="0" name="Animation">&quot;Ativado&quot;</param>
+                                    <param id="1" name="From">0</param>
+                                </action>
+                                <action id="0" name="Set cursor style" sid="2673396834602935" type="Mouse">
+                                    <param id="0" name="Cursor style">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="8275243041536807">
+                            <conditions>
+                                <condition id="7" name="Cursor is over object" sid="8326376086697139" type="Mouse">
+                                    <param id="0" name="Object">som</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set cursor style" sid="8058047530727088" type="Mouse">
+                                    <param id="0" name="Cursor style">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="9060324511213991">
+                            <conditions>
+                                <condition id="7" inverted="1" name="Cursor is over object" sid="1634632821292348" type="Mouse">
+                                    <param id="0" name="Object">btnConfirmar</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="1312041925708953" type="btnConfirmar">
+                                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="8973873795544234">
+                            <conditions>
+                                <condition id="7" inverted="1" name="Cursor is over object" sid="1159374183237369" type="Mouse">
+                                    <param id="0" name="Object">btnPular</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="7778178406883664" type="System">
+                                    <param id="0" name="Variable">UtilizouPular</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="6209503371641998" type="btnPular">
+                                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="8849909315723705">
+                            <conditions>
+                                <condition id="7" inverted="1" name="Cursor is over object" sid="6953394335352796" type="Mouse">
+                                    <param id="0" name="Object">btn5050</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="2775632869957668" type="System">
+                                    <param id="0" name="Variable">Utilizou5050</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="6719930338305122" type="btn5050">
+                                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="8616129086934246">
+                            <conditions>
+                                <condition id="7" inverted="1" name="Cursor is over object" sid="259014346920286" type="Mouse">
+                                    <param id="0" name="Object">btnDica</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="6204518394822147" type="btnDica">
+                                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="582177784697746">
+                            <conditions>
+                                <condition id="7" inverted="1" name="Cursor is over object" sid="5226332328268036" type="Mouse">
+                                    <param id="0" name="Object">btnMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="7074439340014889" type="btnMenu">
+                                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="3131217758722499">
+                            <conditions>
+                                <condition id="7" inverted="1" name="Cursor is over object" sid="2778202199403151" type="Mouse">
+                                    <param id="0" name="Object">XDica</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="9809171155769719" type="XDica">
+                                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                                    <param id="1" name="From">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="5865280835615683">
+                            <conditions>
+                                <condition id="7" inverted="1" name="Cursor is over object" sid="6252024397140811" type="Mouse">
+                                    <param id="0" name="Object">btnConfirmar</param>
+                                </condition>
+                                <condition id="7" inverted="1" name="Cursor is over object" sid="8259079797877159" type="Mouse">
+                                    <param id="0" name="Object">btnDica</param>
+                                </condition>
+                                <condition id="7" inverted="1" name="Cursor is over object" sid="3545231068854947" type="Mouse">
+                                    <param id="0" name="Object">btn5050</param>
+                                </condition>
+                                <condition id="7" inverted="1" name="Cursor is over object" sid="9417319409119533" type="Mouse">
+                                    <param id="0" name="Object">btnPular</param>
+                                </condition>
+                                <condition id="7" inverted="1" name="Cursor is over object" sid="1333910564065351" type="Mouse">
+                                    <param id="0" name="Object">btnMenu</param>
+                                </condition>
+                                <condition id="7" inverted="1" name="Cursor is over object" sid="2695943438368297" type="Mouse">
+                                    <param id="0" name="Object">XDica</param>
+                                </condition>
+                                <condition id="7" inverted="1" name="Cursor is over object" sid="5178506670022143" type="Mouse">
+                                    <param id="0" name="Object">som</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set cursor style" sid="765731361295655" type="Mouse">
+                                    <param id="0" name="Cursor style">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="9599183282405416" type="System">
+                                    <param id="0" name="Variable">controleAudio</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action disabled="1" id="-9" name="Set value" sid="8847196318502338" type="System">
+                                    <param id="0" name="Variable">volume</param>
+                                    <param id="1" name="Value">-100</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="5380742991114">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="1335799108708281" type="System" />
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="4950509961504104">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="7433132756436873" type="System">
+                                            <param id="0" name="Variable">controleAudio</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Play" sid="9240818295574031" type="Audio">
+                                            <param id="0" name="Audio file">sobre_botao</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">volume</param>
+                                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="3391956944836211" type="System">
+                                            <param id="0" name="Variable">controleAudio</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-block any="1" sid="4175204512246037">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="4828899295870212" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">btnConfirmar</param>
+                        </condition>
+                        <condition id="3" name="On touched object" sid="9579495672683064" type="Touch">
+                            <param id="0" name="Object">btnConfirmar</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="9775216066511157">
+                            <conditions>
+                                <condition id="0" name="is checked?" sid="2264931303188551" type="radboxResp" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="308659342985926" type="Audio">
+                                    <param id="0" name="Audio file">selecionar_botao</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="7189833645289265" type="System">
+                                    <param id="0" name="Variable">clicouProx</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block any="1" sid="2748229118377881">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="3890522862631106" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">btnMenu</param>
+                        </condition>
+                        <condition id="3" name="On touched object" sid="4870412462817524" type="Touch">
+                            <param id="0" name="Object">btnMenu</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="7413940337306723" type="Audio">
+                            <param id="0" name="Audio file">selecionar_botao</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="-25" name="Go to layout (by name)" sid="8376484928734451" type="System">
+                            <param id="0" name="Layout">&quot;Principal&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>

@@ -1,0 +1,561 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Principal</name>
+    <events>
+        <variable constant="0" name="controleMudo" sid="8880522397074961" static="0" type="number">0</variable>
+        <variable constant="0" name="controleBotaoVermelho" sid="6153681340806644" static="0" type="number">0</variable>
+        <variable constant="0" name="controleBrilho" sid="6825259937991265" static="0" type="number">0</variable>
+        <variable constant="0" name="numPergFacil" sid="7251574534636558" static="0" type="number">0</variable>
+        <variable constant="0" name="numPergMedio" sid="5975851864831461" static="0" type="number">0</variable>
+        <variable constant="0" name="numPergDificil" sid="1396278563583171" static="0" type="number">0</variable>
+        <variable constant="0" name="perguntaAtual" sid="7631570170972145" static="0" type="number">1</variable>
+        <variable constant="0" name="acertos" sid="3420171410767063" static="0" type="number">0</variable>
+        <variable constant="0" name="controleAudio" sid="9898896027788583" static="0" type="number">0</variable>
+        <variable constant="0" name="erros" sid="935236188386902" static="0" type="number">0</variable>
+        <comment>Variáveis para realizar o controle de quanto tempo o jogador levou para responder todas as perguntas</comment>
+        <variable constant="0" name="tempoInicial" sid="146811196246271" static="0" type="number">0</variable>
+        <variable constant="0" name="tempoFinal" sid="266933254061707" static="0" type="number">0</variable>
+        <event-group description="" sid="888587939706443" title="Animacao">
+            <sub-events>
+                <event-block sid="3588293914077673">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="4320893269485823" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Preload" sid="9279655662252449" type="Audio">
+                            <param id="0" name="Audio file">botao_caindo</param>
+                        </action>
+                        <action id="4" name="Preload" sid="6215480447917871" type="Audio">
+                            <param id="0" name="Audio file">brilho</param>
+                        </action>
+                        <action id="4" name="Preload" sid="8317340048523379" type="Audio">
+                            <param id="0" name="Audio file">creditos</param>
+                        </action>
+                        <action id="4" name="Preload" sid="9589811101201918" type="Audio">
+                            <param id="0" name="Audio file">parabains</param>
+                        </action>
+                        <action id="4" name="Preload" sid="7307374354907084" type="Audio">
+                            <param id="0" name="Audio file">resposta_certa</param>
+                        </action>
+                        <action id="4" name="Preload" sid="5441788099828477" type="Audio">
+                            <param id="0" name="Audio file">resposta_errada</param>
+                        </action>
+                        <action id="4" name="Preload" sid="1724976837867411" type="Audio">
+                            <param id="0" name="Audio file">selecionar_botao</param>
+                        </action>
+                        <action id="4" name="Preload" sid="6927797522241096" type="Audio">
+                            <param id="0" name="Audio file">sobre_botao</param>
+                        </action>
+                        <action id="4" name="Preload" sid="3867979597250515" type="Audio">
+                            <param id="0" name="Audio file">xdica</param>
+                        </action>
+                        <action id="6" name="Stop" sid="1380850192198525" type="Audio">
+                            <param id="0" name="Tag">&quot;parabains&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="9393254892278916">
+                            <conditions>
+                                <condition id="5" inverted="1" name="Is tag playing" sid="7576076323373303" type="Audio">
+                                    <param id="0" name="Tag">&quot;fundo&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="5704614172778902" type="Audio">
+                                    <param id="0" name="Audio file">musica_fundo</param>
+                                    <param id="2" name="Loop">1</param>
+                                    <param id="3" name="Volume">volume -15</param>
+                                    <param id="1" name="Tag (optional)">&quot;fundo&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="2884416878727941">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="4445104226641841" type="System">
+                                    <param id="0" name="Variable">controleMudo</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="3753764949617079" type="som">
+                                    <param id="0" name="Animation">&quot;mute&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="10" name="Set master volume" sid="8768691915679173" type="Audio">
+                                    <param id="0" name="dB">-100</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="9574279093887979">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="6491390340117418" type="System">
+                                    <param id="0" name="Variable">controleMudo</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="5595518969317356" type="som">
+                                    <param id="0" name="Animation">&quot;unmute&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="10" name="Set master volume" sid="8382570571920746" type="Audio">
+                                    <param id="0" name="dB">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="3139324574759255">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="1201590798634094" type="System">
+                                    <param id="0" name="Variable">controleBotaoVermelho</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-16" name="Wait" sid="8688328014593951" type="System">
+                                    <param id="0" name="Seconds">0.5</param>
+                                </action>
+                                <action id="0" name="Play" sid="4195035114654825" type="Audio">
+                                    <param id="0" name="Audio file">botao_caindo</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">volume</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="3425345751338058" type="System">
+                                    <param id="0" name="Variable">controleBotaoVermelho</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="6596687454967111">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="5401062624693505" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-2" name="Set Y" sid="9996632672063002" type="icone">
+                                    <param id="0" name="Y">300</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="3821260896450682">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="1570448772841787" type="System">
+                            <param id="0" name="Variable">controleBotaoVermelho</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="-1" name="Every tick" sid="551471184289671" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Set Y" sid="5874373409723017" type="icone">
+                            <param id="0" name="Y">icone.Y+9</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="2030425507986528">
+                    <conditions>
+                        <condition id="-2" name="Compare Y" sid="1429325279279829" type="icone">
+                            <param id="0" name="Comparison">5</param>
+                            <param id="1" name="Y co-ordinate">300</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="8109795438921858" type="System">
+                            <param id="0" name="Variable">controleBotaoVermelho</param>
+                            <param id="1" name="Value">2</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="1010765192017402">
+                    <conditions>
+                        <condition id="7" name="Cursor is over object" sid="6946155136648" type="Mouse">
+                            <param id="0" name="Object">areaBotao</param>
+                        </condition>
+                        <condition id="-2" name="Compare Y" sid="5220541369521077" type="icone">
+                            <param id="0" name="Comparison">5</param>
+                            <param id="1" name="Y co-ordinate">300</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="7995042032375362" type="System">
+                            <param id="0" name="Variable">controleBrilho</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="2" name="Set muted" sid="4785654892078007" type="Audio">
+                            <param id="0" name="Tag">&quot;brilho&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="6746112153200695" type="brilho_animado">
+                            <param id="0" name="Animation">&quot;Brilhando&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="4253664799112665">
+                    <conditions>
+                        <condition id="7" inverted="1" name="Cursor is over object" sid="6559789589635481" type="Mouse">
+                            <param id="0" name="Object">areaBotao</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="2128069373468661" type="System">
+                            <param id="0" name="Variable">controleBrilho</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="2047138380218335" type="brilho_animado">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="2" name="Set muted" sid="9684212502971892" type="Audio">
+                            <param id="0" name="Tag">&quot;brilho&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="4334391657566286">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="1421853234308057" type="System">
+                            <param id="0" name="Variable">controleBrilho</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="7637849339930272">
+                            <conditions>
+                                <condition id="-6" name="Every X seconds" sid="6698738003798902" type="System">
+                                    <param id="0" name="Interval (seconds)">0.06</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="6358470606153907" type="brilho_animado">
+                                    <param id="0" name="Frame number">brilho_animado.AnimationFrame+1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="4042740751324686">
+                            <conditions>
+                                <condition id="-6" name="Every X seconds" sid="722167215459105" type="System">
+                                    <param id="0" name="Interval (seconds)">1.03</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="6134946401914517" type="Audio">
+                                    <param id="0" name="Audio file">brilho</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">volume</param>
+                                    <param id="1" name="Tag (optional)">&quot;brilho&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="2530975544793988" title="contrMouse">
+            <sub-events>
+                <event-block any="1" sid="2067557271410572">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="9294741845595458" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">btnJogar</param>
+                        </condition>
+                        <condition id="3" name="On touched object" sid="1035786800930842" type="Touch">
+                            <param id="0" name="Object">btnJogar</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set cursor style" sid="1446973490748093" type="Mouse">
+                            <param id="0" name="Cursor style">0</param>
+                        </action>
+                        <action id="0" name="Execute" sid="274974040754001" type="CallJS">
+                            <param id="0" name="Value">&quot;sendPlaytimeData(0.0,0,&apos;RespondasePuder&apos;)&quot;</param>
+                        </action>
+                        <action id="-25" name="Go to layout (by name)" sid="4375921279440905" type="System">
+                            <param id="0" name="Layout">&quot;Perguntas&quot;</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="902274304117588" type="System">
+                            <param id="0" name="Variable">tempoInicial</param>
+                            <param id="1" name="Value">time</param>
+                        </action>
+                        <action id="0" name="Play" sid="8765011831774407" type="Audio">
+                            <param id="0" name="Audio file">selecionar_botao</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">volume</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block any="1" sid="5524787417420409">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="8615252150131022" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">btnCreditos</param>
+                        </condition>
+                        <condition id="3" name="On touched object" sid="7166729000525995" type="Touch">
+                            <param id="0" name="Object">btnCreditos</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set cursor style" sid="8736431630879077" type="Mouse">
+                            <param id="0" name="Cursor style">0</param>
+                        </action>
+                        <action id="-25" name="Go to layout (by name)" sid="1925585820839599" type="System">
+                            <param id="0" name="Layout">&quot;Creditos&quot;</param>
+                        </action>
+                        <action id="0" name="Play" sid="2592545107822564" type="Audio">
+                            <param id="0" name="Audio file">selecionar_botao</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">volume</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block any="1" sid="3609432016240357">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="8346963195222242" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">btnInstrucoes</param>
+                        </condition>
+                        <condition id="3" name="On touched object" sid="1685932525703652" type="Touch">
+                            <param id="0" name="Object">btnInstrucoes</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set cursor style" sid="2858320578587081" type="Mouse">
+                            <param id="0" name="Cursor style">0</param>
+                        </action>
+                        <action id="-25" name="Go to layout (by name)" sid="5555337437269291" type="System">
+                            <param id="0" name="Layout">&quot;Instrucoes&quot;</param>
+                        </action>
+                        <action id="0" name="Play" sid="8028200736461978" type="Audio">
+                            <param id="0" name="Audio file">selecionar_botao</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">volume</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block any="1" sid="1125227201593772">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="2429783999614848" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">som</param>
+                        </condition>
+                        <condition id="3" name="On touched object" sid="2972181876469064" type="Touch">
+                            <param id="0" name="Object">som</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="9797248972750108">
+                            <conditions>
+                                <condition id="2" name="Is playing" sid="2879631444367828" type="som">
+                                    <param id="0" name="Animation">&quot;unmute&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="7373684793847231" type="som">
+                                    <param id="0" name="Animation">&quot;mute&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="10" name="Set master volume" sid="4742236129519663" type="Audio">
+                                    <param id="0" name="dB">-100</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="7559300723897555" type="System">
+                                    <param id="0" name="Variable">controleMudo</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="4005288454074369">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="9533063677966071" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="8514971819942064" type="som">
+                                    <param id="0" name="Animation">&quot;unmute&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="10" name="Set master volume" sid="3961608496860672" type="Audio">
+                                    <param id="0" name="dB">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="9797508642330166" type="System">
+                                    <param id="0" name="Variable">controleMudo</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-group description="" sid="6914881374564276" title="atribCSS">
+                    <sub-events>
+                        <event-block sid="3901718491354784">
+                            <conditions>
+                                <condition id="7" name="Cursor is over object" sid="2069917113744268" type="Mouse">
+                                    <param id="0" name="Object">btnJogar</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="6520894753869426" type="btnJogar">
+                                    <param id="0" name="Animation">&quot;focused&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="0" name="Set cursor style" sid="8955567048607578" type="Mouse">
+                                    <param id="0" name="Cursor style">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="2313307560626755">
+                            <conditions>
+                                <condition id="7" inverted="1" name="Cursor is over object" sid="7738349558209969" type="Mouse">
+                                    <param id="0" name="Object">btnJogar</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="54174484027911" type="btnJogar">
+                                    <param id="0" name="Animation">&quot;notfocused&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="2188561706222442">
+                            <conditions>
+                                <condition id="7" name="Cursor is over object" sid="5903056399211232" type="Mouse">
+                                    <param id="0" name="Object">btnCreditos</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="655918238481281" type="btnCreditos">
+                                    <param id="0" name="Animation">&quot;focused&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="0" name="Set cursor style" sid="9133406431954355" type="Mouse">
+                                    <param id="0" name="Cursor style">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="1235706202869141">
+                            <conditions>
+                                <condition id="7" inverted="1" name="Cursor is over object" sid="1419013449238976" type="Mouse">
+                                    <param id="0" name="Object">btnCreditos</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="4755482551247938" type="btnCreditos">
+                                    <param id="0" name="Animation">&quot;notfocused&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="1132669105057168">
+                            <conditions>
+                                <condition id="7" name="Cursor is over object" sid="6704488336339143" type="Mouse">
+                                    <param id="0" name="Object">btnInstrucoes</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="1409888603913625" type="btnInstrucoes">
+                                    <param id="0" name="Animation">&quot;focused&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="0" name="Set cursor style" sid="1129261629914197" type="Mouse">
+                                    <param id="0" name="Cursor style">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="8478656678111186">
+                            <conditions>
+                                <condition id="7" name="Cursor is over object" sid="2370651527069965" type="Mouse">
+                                    <param id="0" name="Object">som</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set cursor style" sid="6248794659980329" type="Mouse">
+                                    <param id="0" name="Cursor style">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="5083167518194203">
+                            <conditions>
+                                <condition id="7" inverted="1" name="Cursor is over object" sid="6522147579555391" type="Mouse">
+                                    <param id="0" name="Object">btnInstrucoes</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="9794670639081875" type="btnInstrucoes">
+                                    <param id="0" name="Animation">&quot;notfocused&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="303385634639923">
+                            <conditions>
+                                <condition id="7" inverted="1" name="Cursor is over object" sid="7181277901786341" type="Mouse">
+                                    <param id="0" name="Object">btnJogar</param>
+                                </condition>
+                                <condition id="7" inverted="1" name="Cursor is over object" sid="8236993249381004" type="Mouse">
+                                    <param id="0" name="Object">btnCreditos</param>
+                                </condition>
+                                <condition id="7" inverted="1" name="Cursor is over object" sid="6975596279082506" type="Mouse">
+                                    <param id="0" name="Object">btnInstrucoes</param>
+                                </condition>
+                                <condition id="7" inverted="1" name="Cursor is over object" sid="9745894708076408" type="Mouse">
+                                    <param id="0" name="Object">som</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set cursor style" sid="5932900219392605" type="Mouse">
+                                    <param id="0" name="Cursor style">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="74224144070909" type="System">
+                                    <param id="0" name="Variable">controleAudio</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="9792714986076947">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="4835571146117532" type="System" />
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="3439382956907884">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="7663758112481154" type="System">
+                                            <param id="0" name="Variable">controleAudio</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Play" sid="9899247721298733" type="Audio">
+                                            <param id="0" name="Audio file">sobre_botao</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">volume</param>
+                                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="8163707228958481" type="System">
+                                            <param id="0" name="Variable">controleAudio</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>

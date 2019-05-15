@@ -8,8 +8,8 @@ function sendData(correta,pergunta,nroPergunta,respostas,escolhida,acertou,taman
 	}
 	$.getJSON("remar.json", function(json) {
         info.exportedResourceId = json.exportedResourceId;
-        info.question = correta;
-        info.correctAnswer = pergunta;
+        info.question = pergunta;
+        info.correctAnswer = correta;
         info.challengeId = nroPergunta;
         info.choices = respostas;
         info.answer = escolhida;
@@ -26,8 +26,8 @@ function sendData(correta,pergunta,nroPergunta,respostas,escolhida,acertou,taman
             }
         })
 });
-	console.log(pergunta);
 	console.log(correta);
+	console.log(pergunta);
 	console.log(nroPergunta);
 	console.log(respostas);
 	console.log(escolhida);
@@ -63,9 +63,9 @@ function sendPlaytimeData(tempo,tipo,idJogo,idNivel,nomeNivel,idDesafio){
     var info = {};
     var path;
     if(window.location.hostname == "localhost" ){   // for localhost tests
-        path = "/exported-resource/saveTimeStats"
+        path = "/stats/saveChallengeStats"
     }else {                                 // for web version in production, electron and crosswalk versions
-        path = "http://remar.dc.ufscar.br/exported-resource/saveTimeStats"
+        path = "http://remar.dc.ufscar.br/stats/saveChallengeStats"
     }
     $.getJSON("remar.json", function(json) {
         info.exportedResourceId = json.exportedResourceId;

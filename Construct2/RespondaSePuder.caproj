@@ -1,0 +1,955 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2project>
+    <name>RespondaSePuder</name>
+    <description></description>
+    <version>1.0</version>
+    <author></author>
+    <author-email></author-email>
+    <author-website></author-website>
+    <app-id></app-id>
+    <unique-id>2udpr89toyfkz</unique-id>
+    <saved-with-version>26900</saved-with-version>
+    <used-plugins>
+        <plugin author="Scirra" id="Arr" version="1">Array</plugin>
+        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
+        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
+        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
+        <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
+        <plugin author="Gregory Georges" id="RadioCheckButton" version="1.139999986">Radio &amp; Checkbox</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
+        <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
+        <plugin author="Joe7" id="cjs" version="1">Call JS</plugin>
+        <plugin author="Joe7" id="ljson" version="1.200000048">Load JSON</plugin>
+        <plugin author="Joe7" id="rA" version="1.100000024">Random Array</plugin>
+    </used-plugins>
+    <used-behaviors>
+        <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
+    </used-behaviors>
+    <used-effects>
+        <effect author="Scirra" id="blurhorizontal">Blur Horizontal</effect>
+        <effect author="Scirra" id="blurvertical">Blur Vertical</effect>
+    </used-effects>
+    <configurations>
+        <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML 5" />
+    </configurations>
+    <window-size>
+        <width>800</width>
+        <height>600</height>
+    </window-size>
+    <pixel-rounding>0</pixel-rounding>
+    <preview-effects>1</preview-effects>
+    <use-loader-layout>0</use-loader-layout>
+    <configuration-settings>
+        <prop name="Clear background">Yes</prop>
+        <prop name="Enable WebGL">On</prop>
+        <prop name="Fullscreen in browser">Off</prop>
+        <prop name="Preview browser">(default)</prop>
+        <prop name="Preview mode">HTTP</prop>
+        <prop name="Sampling">Linear</prop>
+    </configuration-settings>
+    <object-folder>
+        <object-folder name="layPrincipal">
+            <object-type name="btnJogar" sid="4102672903873583">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="notfocused" pingpong="0" repeatcount="1" repeatto="0" sid="1945379203364792" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Responda Se Puder - layout\imgs\play.png">
+                            <collision-poly>
+                                <point x="0.2" y="0.2" />
+                                <point x="0.5" y="0.075" />
+                                <point x="0.8" y="0.2" />
+                                <point x="0.925" y="0.5" />
+                                <point x="0.805" y="0.805" />
+                                <point x="0.5" y="0.925" />
+                                <point x="0.2" y="0.8" />
+                                <point x="0.075" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                    <animation framecount="1" loop="0" name="focused" pingpong="0" repeatcount="1" repeatto="0" sid="2679154551296087" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Responda Se Puder - layout\imgs\play_apertado.png">
+                            <collision-poly>
+                                <point x="0.21" y="0.21" />
+                                <point x="0.5" y="0.09" />
+                                <point x="0.79" y="0.21" />
+                                <point x="0.925" y="0.5" />
+                                <point x="0.805" y="0.805" />
+                                <point x="0.5" y="0.94" />
+                                <point x="0.195" y="0.805" />
+                                <point x="0.075" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="btnCreditos" sid="1406746495219728">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="notfocused" pingpong="0" repeatcount="1" repeatto="0" sid="2753219336056461" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Responda Se Puder - layout\imgs\creditos.png">
+                            <collision-poly>
+                                <point x="0.2" y="0.2" />
+                                <point x="0.5" y="0.075" />
+                                <point x="0.8" y="0.2" />
+                                <point x="0.925" y="0.5" />
+                                <point x="0.805" y="0.805" />
+                                <point x="0.5" y="0.925" />
+                                <point x="0.2" y="0.8" />
+                                <point x="0.075" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                    <animation framecount="1" loop="0" name="focused" pingpong="0" repeatcount="1" repeatto="0" sid="1900899447398724" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.505" original-source="C:\Users\LOA\Desktop\Responda Se Puder - layout\imgs\creditos_apertado.png">
+                            <collision-poly>
+                                <point x="0.21" y="0.21" />
+                                <point x="0.5" y="0.09" />
+                                <point x="0.79" y="0.21" />
+                                <point x="0.925" y="0.5" />
+                                <point x="0.805" y="0.805" />
+                                <point x="0.5" y="0.94" />
+                                <point x="0.195" y="0.805" />
+                                <point x="0.075" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="btnInstrucoes" sid="9952440211246555">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="notfocused" pingpong="0" repeatcount="1" repeatto="0" sid="5441907795647329" speed="5">
+                        <frame duration="1" hotspotX="0.505" hotspotY="0.505" original-source="C:\Users\LOA\Desktop\Responda Se Puder - layout\imgs\instrucoes.png">
+                            <collision-poly>
+                                <point x="0.0104712" y="0.0246914" />
+                                <point x="0.497382" y="0" />
+                                <point x="0.984293" y="0.037037" />
+                                <point x="0.984293" y="0.962963" />
+                                <point x="0.497382" y="1" />
+                                <point x="0.0104712" y="0.975309" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                    <animation framecount="1" loop="0" name="focused" pingpong="0" repeatcount="1" repeatto="0" sid="7025239685812891" speed="5">
+                        <frame duration="1" hotspotX="0.505" hotspotY="0.505" original-source="C:\Users\LOA\Desktop\Responda Se Puder - layout\imgs\instrucoes_apertado.png">
+                            <collision-poly>
+                                <point x="0.0104712" y="0.0246914" />
+                                <point x="0.497382" y="0" />
+                                <point x="0.984293" y="0.037037" />
+                                <point x="0.984293" y="0.962963" />
+                                <point x="0.497382" y="1" />
+                                <point x="0.0104712" y="0.975309" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="BGPrincipal" sid="9969869664014742">
+                <plugin id="TiledBg" />
+                <texture original-source="C:\Users\LOA\Desktop\Responda Se Puder - layout\imgs\menu.png" />
+            </object-type>
+            <object-type name="brilho_animado" sid="2517801497652494">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="15" loop="0" name="Brilhando" pingpong="0" repeatcount="1" repeatto="0" sid="7144701750569265" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho1.png">
+                            <collision-poly>
+                                <point x="0.518519" y="0.5" />
+                                <point x="0.518519" y="0.518519" />
+                                <point x="0.5" y="0.518519" />
+                                <point x="0.5" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho2.png">
+                            <collision-poly>
+                                <point x="0.5" y="0.5" />
+                                <point x="0.5" y="0.481481" />
+                                <point x="0.518519" y="0.481481" />
+                                <point x="0.537037" y="0.5" />
+                                <point x="0.5" y="0.537037" />
+                                <point x="0.481481" y="0.518519" />
+                                <point x="0.481481" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho3.png">
+                            <collision-poly>
+                                <point x="0.481481" y="0.481481" />
+                                <point x="0.518519" y="0.481481" />
+                                <point x="0.537037" y="0.5" />
+                                <point x="0.537037" y="0.537037" />
+                                <point x="0.5" y="0.537037" />
+                                <point x="0.481481" y="0.518519" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho4.png">
+                            <collision-poly>
+                                <point x="0.481481" y="0.481481" />
+                                <point x="0.518519" y="0.481481" />
+                                <point x="0.537037" y="0.5" />
+                                <point x="0.537037" y="0.537037" />
+                                <point x="0.5" y="0.555556" />
+                                <point x="0.462963" y="0.537037" />
+                                <point x="0.481481" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho5.png">
+                            <collision-poly>
+                                <point x="0.5" y="0.462963" />
+                                <point x="0.518519" y="0.481481" />
+                                <point x="0.555556" y="0.5" />
+                                <point x="0.537037" y="0.537037" />
+                                <point x="0.5" y="0.555556" />
+                                <point x="0.462963" y="0.537037" />
+                                <point x="0.462963" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho6.png">
+                            <collision-poly>
+                                <point x="0.5" y="0.462963" />
+                                <point x="0.518519" y="0.481481" />
+                                <point x="0.574074" y="0.5" />
+                                <point x="0.5" y="0.574074" />
+                                <point x="0.462963" y="0.537037" />
+                                <point x="0.462963" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho7.png">
+                            <collision-poly>
+                                <point x="0.462963" y="0.462963" />
+                                <point x="0.5" y="0.425926" />
+                                <point x="0.537037" y="0.462963" />
+                                <point x="0.592593" y="0.5" />
+                                <point x="0.555556" y="0.555556" />
+                                <point x="0.5" y="0.592593" />
+                                <point x="0.462963" y="0.537037" />
+                                <point x="0.444444" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho8.png">
+                            <collision-poly>
+                                <point x="0.5" y="0.425926" />
+                                <point x="0.537037" y="0.462963" />
+                                <point x="0.592593" y="0.5" />
+                                <point x="0.537037" y="0.537037" />
+                                <point x="0.5" y="0.592593" />
+                                <point x="0.462963" y="0.537037" />
+                                <point x="0.425926" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho9.png">
+                            <collision-poly>
+                                <point x="0.481481" y="0.481481" />
+                                <point x="0.5" y="0.444444" />
+                                <point x="0.537037" y="0.462963" />
+                                <point x="0.574074" y="0.5" />
+                                <point x="0.5" y="0.574074" />
+                                <point x="0.462963" y="0.537037" />
+                                <point x="0.444444" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho10.png">
+                            <collision-poly>
+                                <point x="0.481481" y="0.481481" />
+                                <point x="0.5" y="0.481481" />
+                                <point x="0.537037" y="0.462963" />
+                                <point x="0.555556" y="0.5" />
+                                <point x="0.537037" y="0.537037" />
+                                <point x="0.5" y="0.555556" />
+                                <point x="0.462963" y="0.537037" />
+                                <point x="0.462963" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho11.png">
+                            <collision-poly>
+                                <point x="0.481481" y="0.481481" />
+                                <point x="0.5" y="0.481481" />
+                                <point x="0.537037" y="0.462963" />
+                                <point x="0.555556" y="0.5" />
+                                <point x="0.537037" y="0.537037" />
+                                <point x="0.5" y="0.555556" />
+                                <point x="0.481481" y="0.518519" />
+                                <point x="0.462963" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho12.png">
+                            <collision-poly>
+                                <point x="0.481481" y="0.481481" />
+                                <point x="0.518519" y="0.481481" />
+                                <point x="0.537037" y="0.5" />
+                                <point x="0.537037" y="0.537037" />
+                                <point x="0.5" y="0.537037" />
+                                <point x="0.481481" y="0.518519" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho13.png">
+                            <collision-poly>
+                                <point x="0.5" y="0.5" />
+                                <point x="0.5" y="0.481481" />
+                                <point x="0.518519" y="0.481481" />
+                                <point x="0.537037" y="0.5" />
+                                <point x="0.537037" y="0.537037" />
+                                <point x="0.5" y="0.537037" />
+                                <point x="0.481481" y="0.518519" />
+                                <point x="0.481481" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho14.png">
+                            <collision-poly>
+                                <point x="0.518519" y="0.5" />
+                                <point x="0.518519" y="0.518519" />
+                                <point x="0.5" y="0.518519" />
+                                <point x="0.5" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho0.png">
+                            <collision-poly>
+                                <point x="0.518519" y="0.5" />
+                                <point x="0.518519" y="0.518519" />
+                                <point x="0.5" y="0.518519" />
+                                <point x="0.5" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="9296312926013143" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho0.png" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="icone" sid="1532951488456927">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1593589413162872" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Responda Se Puder - layout\imgs\botao_menu.png">
+                            <collision-poly>
+                                <point x="0.27375" y="0.365" />
+                                <point x="0.5" y="0.403333" />
+                                <point x="0.4575" y="0.5" />
+                                <point x="0.5" y="0.478333" />
+                                <point x="0.35625" y="0.525" />
+                                <point x="0.2375" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="areaBotao" sid="2961851443696593">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="6994512557028399" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+        </object-folder>
+        <object-folder name="layPerguntas">
+            <object-type name="pergDificil" sid="5280518632392004">
+                <plugin id="ljson" />
+            </object-type>
+            <object-type name="pergFacil" sid="2778575722224463">
+                <plugin id="ljson" />
+            </object-type>
+            <object-type name="pergMedio" sid="5164461060801075">
+                <plugin id="ljson" />
+            </object-type>
+            <object-type name="radboxResp" sid="203827060627256">
+                <plugin id="RadioCheckButton" />
+                <instance-variables>
+                    <instance-variable name="respSelec" sid="5834350644487506" type="string" />
+                </instance-variables>
+            </object-type>
+            <object-type name="sort5050" sid="4139950723713057">
+                <plugin id="rA" />
+            </object-type>
+            <object-type name="sortDificil" sid="4608256609622296">
+                <plugin id="rA" />
+            </object-type>
+            <object-type name="sortFacil" sid="83596238943235">
+                <plugin id="rA" />
+            </object-type>
+            <object-type name="sortMedio" sid="738831661230979">
+                <plugin id="rA" />
+            </object-type>
+            <object-type name="sortRespostas" sid="4350820777890939">
+                <plugin id="rA" />
+            </object-type>
+            <object-type name="txtPergunta" sid="6167547993378847">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="txtPontuacao" sid="4053120562689922">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="BGPerguntas" sid="7737819106266388">
+                <plugin id="TiledBg" />
+                <texture original-source="C:\Users\Valério\Documents\GitHub\responda_se_puder\Construct2\imgs\tela_perguntas.png" />
+            </object-type>
+            <object-type name="respCerta" sid="8283686109564853">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="4106363950519452" speed="5">
+                        <frame duration="1" hotspotX="0.50125" hotspotY="0.501667" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder (finalizado)\imgs\resposta_certa.png">
+                            <collision-poly>
+                                <point x="0.288952" y="0.535433" />
+                                <point x="0.5" y="0.467192" />
+                                <point x="0.701133" y="0.498688" />
+                                <point x="0.711048" y="0.464567" />
+                                <point x="0.5" y="0.540682" />
+                                <point x="0.294618" y="0.498688" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="respErrada" sid="7283759757510805">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="4210335400237749" speed="5">
+                        <frame duration="1" hotspotX="0.50125" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder (finalizado)\imgs\resposta_errada.png">
+                            <collision-poly>
+                                <point x="0.270538" y="0.502632" />
+                                <point x="0.5" y="0.481579" />
+                                <point x="0.720963" y="0.518421" />
+                                <point x="0.726629" y="0.492105" />
+                                <point x="0.5" y="0.536842" />
+                                <point x="0.27762" y="0.484211" />
+                                <point x="0.270538" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="XDica" sid="7003867859130323">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="6788344294098463" speed="5">
+                        <frame duration="1" hotspotX="0.510204" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder (finalizado)\imgs\x_dicas0.png">
+                            <collision-poly>
+                                <point x="0.0754717" y="0.0740741" />
+                                <point x="0.490566" y="0.0925926" />
+                                <point x="0.943396" y="0.0555556" />
+                                <point x="0.943396" y="0.5" />
+                                <point x="0.867925" y="0.87037" />
+                                <point x="0.490566" y="0.87037" />
+                                <point x="0.0754717" y="0.925926" />
+                                <point x="0.0377358" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                    <animation framecount="1" loop="0" name="Ativado" pingpong="0" repeatcount="1" repeatto="0" sid="8370820970888608" speed="5">
+                        <frame duration="1" hotspotX="0.510204" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder (finalizado)\imgs\x_dicas1.png">
+                            <collision-poly>
+                                <point x="0.0816327" y="0.0869565" />
+                                <point x="0.938776" y="0.0652174" />
+                                <point x="0.857143" y="0.847826" />
+                                <point x="0.489796" y="0.847826" />
+                                <point x="0.0816327" y="0.913043" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="telaDica" sid="6402152920249009">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="9829014154323424" speed="5">
+                        <frame duration="1" hotspotX="0.501493" hotspotY="0.501529" original-source="C:\Users\Valério\Documents\GitHub\responda_se_puder\Construct2\imgs\quadro_dicas.png">
+                            <collision-poly>
+                                <point x="0.010989" y="0.0189394" />
+                                <point x="0.498901" y="0.00757576" />
+                                <point x="0.978022" y="0.0378788" />
+                                <point x="0.991209" y="0.5" />
+                                <point x="0.973626" y="0.954545" />
+                                <point x="0.0131868" y="0.977273" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="txtDica" sid="6911640834732403">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="btnDica" sid="7792733751570703">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="5414189937707931" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Valério\Documents\GitHub\responda_se_puder\Construct2\imgs\btnDica1.png">
+                            <collision-poly>
+                                <point x="0.7" y="0" />
+                                <point x="0.7" y="0.833333" />
+                                <point x="0.3" y="0.833333" />
+                                <point x="0.3" y="0" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                    <animation framecount="1" loop="0" name="Ativado" pingpong="0" repeatcount="1" repeatto="0" sid="911240517825581" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Valério\Documents\GitHub\responda_se_puder\Construct2\imgs\btnDica2.png">
+                            <collision-poly>
+                                <point x="0.3" y="0.047619" />
+                                <point x="0.3" y="0.880952" />
+                                <point x="0.7" y="0.880952" />
+                                <point x="0.7" y="0.047619" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="btnPular" sid="9225238901167632">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="9413463431721226" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Valério\Documents\GitHub\responda_se_puder\Construct2\imgs\btnPular1.png">
+                            <collision-poly>
+                                <point x="0.3" y="0" />
+                                <point x="0.7" y="0" />
+                                <point x="0.7" y="0.833333" />
+                                <point x="0.3" y="0.833333" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                    <animation framecount="1" loop="0" name="Ativado" pingpong="0" repeatcount="1" repeatto="0" sid="9435202200762526" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Valério\Documents\GitHub\responda_se_puder\Construct2\imgs\btnPular2.png">
+                            <collision-poly>
+                                <point x="0.3" y="0.047619" />
+                                <point x="0.7" y="0.047619" />
+                                <point x="0.7" y="0.880952" />
+                                <point x="0.3" y="0.880952" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="btnMenu" sid="1848755406481824">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="2488321004536158" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Valério\Documents\GitHub\responda_se_puder\Construct2\imgs\btnMenu1.png" />
+                    </animation>
+                    <animation framecount="1" loop="0" name="Ativado" pingpong="0" repeatcount="1" repeatto="0" sid="3360712126238402" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Valério\Documents\GitHub\responda_se_puder\Construct2\imgs\btnMenu2.png" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="btn5050" sid="1621737258448316">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="8599201014909585" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Valério\Documents\GitHub\responda_se_puder\Construct2\imgs\btn50501.png">
+                            <collision-poly>
+                                <point x="0.275" y="0" />
+                                <point x="0.725" y="0" />
+                                <point x="0.725" y="0.833333" />
+                                <point x="0.275" y="0.833333" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                    <animation framecount="1" loop="0" name="Ativado" pingpong="0" repeatcount="1" repeatto="0" sid="9592334865393743" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Valério\Documents\GitHub\responda_se_puder\Construct2\imgs\btn50502.png">
+                            <collision-poly>
+                                <point x="0.275" y="0.047619" />
+                                <point x="0.725" y="0.047619" />
+                                <point x="0.725" y="0.880952" />
+                                <point x="0.275" y="0.880952" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="btnConfirmar" sid="7761340650481305">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="8141926303804531" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Valério\Documents\GitHub\responda_se_puder\Construct2\imgs\btnConfirmar1.png">
+                            <collision-poly>
+                                <point x="0.875" y="0" />
+                                <point x="0.875" y="0.833333" />
+                                <point x="0.125" y="0.833333" />
+                                <point x="0.125" y="0" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                    <animation framecount="1" loop="0" name="Ativado" pingpong="0" repeatcount="1" repeatto="0" sid="3486563959372704" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Valério\Documents\GitHub\responda_se_puder\Construct2\imgs\btnConfirmar2.png">
+                            <collision-poly>
+                                <point x="0.875" y="0.047619" />
+                                <point x="0.875" y="0.880952" />
+                                <point x="0.125" y="0.880952" />
+                                <point x="0.125" y="0.047619" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+        </object-folder>
+        <object-folder name="layFimJogo">
+            <object-type name="txtFimJogo" sid="225944856904277">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="BGFimJogo" sid="5170052787765356">
+                <plugin id="TiledBg" />
+                <texture original-source="C:\Users\LOA\Desktop\Responda Se Puder - layout\imgs\tela_fimdejogo.png" />
+            </object-type>
+            <object-type name="brilho_animado2" sid="6704351789446573">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="16" loop="0" name="Brilhando" pingpong="0" repeatcount="1" repeatto="0" sid="1173977610654929" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho0.png" />
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho1.png">
+                            <collision-poly>
+                                <point x="0.518519" y="0.5" />
+                                <point x="0.518519" y="0.518519" />
+                                <point x="0.5" y="0.518519" />
+                                <point x="0.5" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho2.png">
+                            <collision-poly>
+                                <point x="0.5" y="0.5" />
+                                <point x="0.5" y="0.481481" />
+                                <point x="0.518519" y="0.481481" />
+                                <point x="0.537037" y="0.5" />
+                                <point x="0.5" y="0.537037" />
+                                <point x="0.481481" y="0.518519" />
+                                <point x="0.481481" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho3.png">
+                            <collision-poly>
+                                <point x="0.481481" y="0.481481" />
+                                <point x="0.518519" y="0.481481" />
+                                <point x="0.537037" y="0.5" />
+                                <point x="0.537037" y="0.537037" />
+                                <point x="0.5" y="0.537037" />
+                                <point x="0.481481" y="0.518519" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho4.png">
+                            <collision-poly>
+                                <point x="0.481481" y="0.481481" />
+                                <point x="0.518519" y="0.481481" />
+                                <point x="0.537037" y="0.5" />
+                                <point x="0.537037" y="0.537037" />
+                                <point x="0.5" y="0.555556" />
+                                <point x="0.462963" y="0.537037" />
+                                <point x="0.481481" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho5.png">
+                            <collision-poly>
+                                <point x="0.5" y="0.462963" />
+                                <point x="0.518519" y="0.481481" />
+                                <point x="0.555556" y="0.5" />
+                                <point x="0.537037" y="0.537037" />
+                                <point x="0.5" y="0.555556" />
+                                <point x="0.462963" y="0.537037" />
+                                <point x="0.462963" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho6.png">
+                            <collision-poly>
+                                <point x="0.5" y="0.462963" />
+                                <point x="0.518519" y="0.481481" />
+                                <point x="0.574074" y="0.5" />
+                                <point x="0.5" y="0.574074" />
+                                <point x="0.462963" y="0.537037" />
+                                <point x="0.462963" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho7.png">
+                            <collision-poly>
+                                <point x="0.462963" y="0.462963" />
+                                <point x="0.5" y="0.425926" />
+                                <point x="0.537037" y="0.462963" />
+                                <point x="0.592593" y="0.5" />
+                                <point x="0.555556" y="0.555556" />
+                                <point x="0.5" y="0.592593" />
+                                <point x="0.462963" y="0.537037" />
+                                <point x="0.444444" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho8.png">
+                            <collision-poly>
+                                <point x="0.5" y="0.425926" />
+                                <point x="0.537037" y="0.462963" />
+                                <point x="0.592593" y="0.5" />
+                                <point x="0.537037" y="0.537037" />
+                                <point x="0.5" y="0.592593" />
+                                <point x="0.462963" y="0.537037" />
+                                <point x="0.425926" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho9.png">
+                            <collision-poly>
+                                <point x="0.481481" y="0.481481" />
+                                <point x="0.5" y="0.444444" />
+                                <point x="0.537037" y="0.462963" />
+                                <point x="0.574074" y="0.5" />
+                                <point x="0.5" y="0.574074" />
+                                <point x="0.462963" y="0.537037" />
+                                <point x="0.444444" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho10.png">
+                            <collision-poly>
+                                <point x="0.481481" y="0.481481" />
+                                <point x="0.5" y="0.481481" />
+                                <point x="0.537037" y="0.462963" />
+                                <point x="0.555556" y="0.5" />
+                                <point x="0.537037" y="0.537037" />
+                                <point x="0.5" y="0.555556" />
+                                <point x="0.462963" y="0.537037" />
+                                <point x="0.462963" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho11.png">
+                            <collision-poly>
+                                <point x="0.481481" y="0.481481" />
+                                <point x="0.5" y="0.481481" />
+                                <point x="0.537037" y="0.462963" />
+                                <point x="0.555556" y="0.5" />
+                                <point x="0.537037" y="0.537037" />
+                                <point x="0.5" y="0.555556" />
+                                <point x="0.481481" y="0.518519" />
+                                <point x="0.462963" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho12.png">
+                            <collision-poly>
+                                <point x="0.481481" y="0.481481" />
+                                <point x="0.518519" y="0.481481" />
+                                <point x="0.537037" y="0.5" />
+                                <point x="0.537037" y="0.537037" />
+                                <point x="0.5" y="0.537037" />
+                                <point x="0.481481" y="0.518519" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho13.png">
+                            <collision-poly>
+                                <point x="0.5" y="0.5" />
+                                <point x="0.5" y="0.481481" />
+                                <point x="0.518519" y="0.481481" />
+                                <point x="0.537037" y="0.5" />
+                                <point x="0.537037" y="0.537037" />
+                                <point x="0.5" y="0.537037" />
+                                <point x="0.481481" y="0.518519" />
+                                <point x="0.481481" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho14.png">
+                            <collision-poly>
+                                <point x="0.518519" y="0.5" />
+                                <point x="0.518519" y="0.518519" />
+                                <point x="0.5" y="0.518519" />
+                                <point x="0.5" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho15.png">
+                            <collision-poly>
+                                <point x="0.518519" y="0.5" />
+                                <point x="0.518519" y="0.518519" />
+                                <point x="0.5" y="0.518519" />
+                                <point x="0.5" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="8289823815270298" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\LOA\Desktop\Valério\Responda Se Puder - layout\imgs\brilho0.png" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="Clickable" sid="6230762428860306">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="8840799324808665" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Valério\Desktop\Sem Título-1.png">
+                            <collision-poly>
+                                <point x="0" y="0" />
+                                <point x="0.95" y="0" />
+                                <point x="0.95" y="0.0666667" />
+                                <point x="1" y="0.0666667" />
+                                <point x="1" y="1" />
+                                <point x="0" y="1" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+        </object-folder>
+        <object-folder name="layInstrucoes">
+            <object-type name="txtInstrucoes" sid="5179413944280341">
+                <plugin id="Text" />
+                <instance-variables>
+                    <instance-variable name="fadeFlag" sid="4711566110726639" type="number" />
+                </instance-variables>
+            </object-type>
+            <object-type name="txtProx" sid="3036208439771581">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="txtAnt" sid="909155065615993">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="txtMenu" sid="7588908702183657">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="txtPag" sid="7458859658776729">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="txtInstrucoesArray" sid="4056936672238348">
+                <plugin id="Arr" />
+            </object-type>
+            <object-type name="TiledBackground" sid="525739170551246">
+                <plugin id="TiledBg" />
+                <texture original-source="C:\Users\LOA\Desktop\Responda Se Puder - layout\imgs\tela_instrucoes.png" />
+            </object-type>
+        </object-folder>
+        <object-folder name="layCreditos">
+            <object-type name="TiledBackground2" sid="4352410501785023">
+                <plugin id="TiledBg" />
+                <texture />
+            </object-type>
+            <object-type name="TextCreditos" sid="2516156547630441">
+                <plugin id="Text" />
+            </object-type>
+        </object-folder>
+        <object-type name="Mouse" sid="6307755872670533">
+            <plugin id="Mouse" />
+        </object-type>
+        <object-type name="Browser" sid="6447156898770339">
+            <plugin id="Browser" />
+        </object-type>
+        <object-type name="Keyboard" sid="3234450108632829">
+            <plugin id="Keyboard" />
+        </object-type>
+        <object-type name="Touch" sid="9732817912180912">
+            <plugin id="Touch" />
+        </object-type>
+        <object-type name="Audio" sid="1663247672200625">
+            <plugin id="Audio" />
+        </object-type>
+        <object-type name="Logos" sid="2255884121871096">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Pin" sid="5067997433083357">
+                    <behavior id="Pin" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="8320655343734398" speed="5">
+                    <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Neto\Desktop\LOA\Créditos - Logos\logos.png">
+                        <collision-poly>
+                            <point x="0.425" y="0.566667" />
+                            <point x="0.5" y="0.125" />
+                            <point x="0.5725" y="0.57" />
+                            <point x="0.5475" y="0.5" />
+                            <point x="0.88625" y="0.848333" />
+                            <point x="0.08625" y="0.885" />
+                            <point x="0.53625" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="som" sid="9685209502959352">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="unmute" pingpong="0" repeatcount="1" repeatto="0" sid="942550607155509" speed="5">
+                    <frame duration="1" hotspotX="0.52381" hotspotY="0.52381" original-source="C:\Users\Valério\Documents\GitHub\responda_se_puder\Construct2\imgs\sound.png">
+                        <collision-poly>
+                            <point x="1" y="0" />
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+                <animation framecount="1" loop="0" name="mute" pingpong="0" repeatcount="1" repeatto="0" sid="9390602335658512" speed="5">
+                    <frame duration="1" hotspotX="0.52381" hotspotY="0.52381">
+                        <collision-poly>
+                            <point x="1" y="0" />
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type global="1" name="CallJS" sid="724930528016333">
+            <plugin id="cjs" />
+        </object-type>
+    </object-folder>
+    <families />
+    <layout-folder>
+        <layout>Intro.xml</layout>
+        <layout>Principal.xml</layout>
+        <layout>Perguntas.xml</layout>
+        <layout>FimJogo.xml</layout>
+        <layout>Creditos.xml</layout>
+        <layout>Instrucoes.xml</layout>
+    </layout-folder>
+    <event-folder>
+        <event-sheet>Perguntas.xml</event-sheet>
+        <event-sheet>Principal.xml</event-sheet>
+        <event-sheet>FimJogo.xml</event-sheet>
+        <event-sheet>Intro.xml</event-sheet>
+        <event-sheet>Creditos.xml</event-sheet>
+        <event-sheet>Instrucoes.xml</event-sheet>
+    </event-folder>
+    <global-instances>
+        <global-instance type="Mouse" uid="41" />
+        <global-instance type="Browser" uid="42" />
+        <global-instance type="Keyboard" uid="43" />
+        <global-instance type="Touch" uid="44">
+            <properties>
+                <use-mouse-input>No</use-mouse-input>
+            </properties>
+        </global-instance>
+        <global-instance type="Audio" uid="45">
+            <properties>
+                <timescale-audio>Off</timescale-audio>
+                <saveload>All</saveload>
+                <play-in-background>No</play-in-background>
+                <positioned-audio></positioned-audio>
+                <panning-model>HRTF</panning-model>
+                <distance-model>Inverse</distance-model>
+                <listener-z-height>600</listener-z-height>
+                <reference-distance>600</reference-distance>
+                <maximum-distance>10000</maximum-distance>
+                <roll-off-factor>1</roll-off-factor>
+            </properties>
+        </global-instance>
+    </global-instances>
+    <sounds-folder>
+        <file name="botao_caindo.ogg" />
+        <file name="brilho.ogg" />
+        <file name="sobre_botao.ogg" />
+        <file name="selecionar_botao.ogg" />
+        <file name="xdica.ogg" />
+        <file name="parabains.ogg" />
+        <file name="resposta_certa.ogg" />
+        <file name="resposta_errada.ogg" />
+    </sounds-folder>
+    <music-folder>
+        <file name="creditos.m4a" />
+        <file name="creditos.ogg" />
+        <file name="musica_fundo.ogg" />
+    </music-folder>
+    <files-folder>
+        <file-folder name="Icons">
+            <file name="icon-16.png" />
+            <file name="icon-32.png" />
+            <file name="icon-114.png" />
+            <file name="icon-128.png" />
+            <file name="icon-256.png" />
+            <file name="loading-logo.png" />
+        </file-folder>
+        <file-folder name="Perguntas">
+            <file name="pergdificil.json" />
+            <file name="pergfacil.json" />
+            <file name="pergmedio.json" />
+        </file-folder>
+        <file-folder name="Coleta">
+            <file name="stats.js" />
+        </file-folder>
+    </files-folder>
+</c2project>
