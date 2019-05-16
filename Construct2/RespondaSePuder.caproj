@@ -877,6 +877,9 @@
         <object-type global="1" name="CallJS" sid="724930528016333">
             <plugin id="cjs" />
         </object-type>
+        <object-type name="debug" sid="679593576084965">
+            <plugin id="Text" />
+        </object-type>
     </object-folder>
     <families />
     <layout-folder>

@@ -33,7 +33,7 @@
                     <param id="0" name="Value">&quot;sendRankingData(&quot; &amp; porcentagem &amp; &quot;)&quot;</param>
                 </action>
                 <action disabled="1" id="0" name="Execute" sid="996603523196217" type="CallJS">
-                    <param id="0" name="Value">&quot;sendTimeData(&quot; &amp; tempoFinal - tempoInicial &amp; &quot;)&quot;</param>
+                    <param id="0" name="Value">&quot;sendTimeData(&quot; &amp; tempoFinalTotal - tempoInicialTotal &amp; &quot;)&quot;</param>
                 </action>
             </actions>
             <sub-events>

@@ -1,4 +1,4 @@
-function sendData(correta,pergunta,nroPergunta,alternativas,escolhida,acertou,tamanho,nroFase,nomeNivel){
+function sendData(pergunta,correta,nroPergunta,alternativas,escolhida,acertou,tamanho,nroFase,nomeNivel){
 	var info = {};
     var path;
     if(window.location.hostname == "localhost" ){   // for localhost tests
@@ -8,9 +8,9 @@ function sendData(correta,pergunta,nroPergunta,alternativas,escolhida,acertou,ta
 	}
 	$.getJSON("remar.json", function(json) {
         info.exportedResourceId = json.exportedResourceId;
+        info.question = pergunta;
         info.correctAnswer = correta;
         info.challengeId = nroPergunta;
-        info.question = pergunta;
         info.choices = alternativas;
         info.answer = escolhida;
         info.win = acertou;
@@ -26,15 +26,16 @@ function sendData(correta,pergunta,nroPergunta,alternativas,escolhida,acertou,ta
             }
         })
 });
-	console.log(pergunta);
-	console.log(correta);
-	console.log(nroPergunta);
-	console.log(alternativas);
-	console.log(escolhida);
-    console.log(acertou);
-    console.log(tamanho);
-    console.log(nroFase);
-    console.log(nomeNivel);
+
+	console.log("sendData");
+	console.log("Questão " + nroPergunta + ": " + pergunta);
+	console.log("Resposta certa: " + correta);
+	console.log("Alternativas: " + alternativas);
+	console.log("Resposta submetida: " + escolhida);
+    console.log("Acertou? " + acertou);
+    console.log("Tamanho: " + tamanho);
+    console.log("Fase " + nroFase + ": " + nomeNivel);
+
 }
 
 function sendRankingData(pontos){
@@ -56,7 +57,10 @@ function sendRankingData(pontos){
             }
         })
     });
-    console.log(pontos);
+
+    console.log("sendRankingData");
+    console.log("Pontuação: " + pontos);
+
 }
 
 function sendPlaytimeData(tempo,tipo,idJogo,idNivel,nomeNivel,idDesafio){
@@ -88,14 +92,16 @@ function sendPlaytimeData(tempo,tipo,idJogo,idNivel,nomeNivel,idDesafio){
             }
         })
     });
-    console.log(tempo);
-    console.log(tipo);
-    console.log(idJogo);
+
+    console.log("sendPlaytimeData");
+    console.log("Tempo: " + tempo + "s");
+    console.log("Tipo: " + tipo);
+    console.log("Nome do jogo: " + idJogo);
     if (idNivel != null){
-        console.log(idNivel);
-        console.log(nomeNivel);
+        console.log("Nível " + idNivel + " - " + nomeNivel);
     }
     if (idDesafio != null){
-        console.log(idDesafio);
+        console.log("Desafio: " + idDesafio);
     }
+
 }

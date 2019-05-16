@@ -131,11 +131,14 @@
                             </conditions>
                             <actions>
                                 <action id="-9" name="Set value" sid="691249175034758" type="System">
-                                    <param id="0" name="Variable">tempoFinal</param>
+                                    <param id="0" name="Variable">tempoFinalTotal</param>
                                     <param id="1" name="Value">time</param>
                                 </action>
                                 <action id="0" name="Execute" sid="506510948854291" type="CallJS">
-                                    <param id="0" name="Value">&quot;sendPlaytimeData(tempoFinal,0,&apos;RespondasePuder&apos;)&quot;</param>
+                                    <param id="0" name="Value">&quot;sendPlaytimeData(&quot; &amp; (tempoFinalTotal-tempoInicialTotal) &amp; &quot;,0,&apos;RespondasePuder&apos;)&quot;</param>
+                                </action>
+                                <action id="0" name="Execute" sid="374112111510383" type="CallJS">
+                                    <param id="0" name="Value">&quot;sendPlaytimeData(&quot; &amp; (tempoFinalNivel-tempoInicialNivel) &amp; &quot;,1,&apos;RespondasePuder&apos;,3,&apos;Nível Difícil&apos;)&quot;</param>
                                 </action>
                                 <action id="-25" name="Go to layout (by name)" sid="7516078165663391" type="System">
                                     <param id="0" name="Layout">&quot;FimJogo&quot;</param>
@@ -219,6 +222,9 @@
                                 <action id="-9" name="Set value" sid="662398737545617" type="System">
                                     <param id="0" name="Variable">Pergunta</param>
                                     <param id="1" name="Value">&quot;&apos;&quot; &amp; replace(pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), 0), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&apos;&quot; &amp; replace(RespCorreta, &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&apos;&quot; &amp; sortFacil.At(perguntaAtual + UtilizouPular - 1) - 1 &amp; &quot;&apos;,&apos;&quot; &amp; replace(pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(0)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(1)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(2)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(3)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&quot; </param>
+                                </action>
+                                <action id="0" name="Set text" sid="502667195427417" type="debug">
+                                    <param id="0" name="Text">Pergunta</param>
                                 </action>
                             </actions>
                         </event-block>
