@@ -228,9 +228,6 @@
                                     <param id="0" name="Variable">sendTimeJS</param>
                                     <param id="1" name="Value">&quot;1,&apos;Nível Fácil&apos;,&quot; &amp; sortFacil.At(perguntaAtual + UtilizouPular - 1) &amp; &quot;)&quot;</param>
                                 </action>
-                                <action id="0" name="Set text" sid="186744472973682" type="debug">
-                                    <param id="0" name="Text">sendTimeJS</param>
-                                </action>
                             </actions>
                         </event-block>
                         <event-block sid="6986521517281302">
@@ -300,9 +297,6 @@
                                     <param id="0" name="Variable">sendTimeJS</param>
                                     <param id="1" name="Value">&quot;2,&apos;Nível Médio&apos;,&quot; &amp; sortMedio.At(perguntaAtual -numPergFacil + UtilizouPular -1) &amp; &quot;)&quot;</param>
                                 </action>
-                                <action id="0" name="Set text" sid="280210278061022" type="debug">
-                                    <param id="0" name="Text">sendTimeJS</param>
-                                </action>
                             </actions>
                         </event-block>
                         <event-block sid="7685576690831081">
@@ -371,9 +365,6 @@
                                 <action id="-9" name="Set value" sid="141163263529407" type="System">
                                     <param id="0" name="Variable">sendTimeJS</param>
                                     <param id="1" name="Value">&quot;3,&apos;Nível Difícil&apos;,&quot; &amp; sortDificil.At(perguntaAtual -numPergFacil -numPergMedio + UtilizouPular -1) &amp; &quot;)&quot;</param>
-                                </action>
-                                <action id="0" name="Set text" sid="748182824219291" type="debug">
-                                    <param id="0" name="Text">sendTimeJS</param>
                                 </action>
                             </actions>
                         </event-block>
