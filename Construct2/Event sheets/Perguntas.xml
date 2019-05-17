@@ -177,7 +177,7 @@
                             <actions>
                                 <action id="-9" name="Set value" sid="341185772980976" type="System">
                                     <param id="0" name="Variable">infoNivel</param>
-                                    <param id="1" name="Value">&quot;&apos;&quot; &amp; PergFacil.GetData(&quot;numero&quot;, 1) &amp; &quot;&apos;,1,&apos;Nível Fácil&apos;&quot;</param>
+                                    <param id="1" name="Value">&quot;&apos;&quot; &amp; PergFacil.GetData(&quot;numero&quot;, 0) &amp; &quot;&apos;,1,&apos;Nível Fácil&apos;&quot;</param>
                                 </action>
                                 <action id="0" name="Set text" sid="1217535667829487" type="txtPergunta">
                                     <param id="0" name="Text">pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), 0)</param>
@@ -246,7 +246,7 @@
                             <actions>
                                 <action id="-9" name="Set value" sid="106332696999565" type="System">
                                     <param id="0" name="Variable">infoNivel</param>
-                                    <param id="1" name="Value">&quot;&apos;&quot; &amp; pergMedio.GetData(&quot;numero&quot;, 1) &amp; &quot;&apos;,2,&apos;Nível Médio&apos;&quot;</param>
+                                    <param id="1" name="Value">&quot;&apos;&quot; &amp; pergMedio.GetData(&quot;numero&quot;, 0) &amp; &quot;&apos;,2,&apos;Nível Médio&apos;&quot;</param>
                                 </action>
                                 <action id="0" name="Set text" sid="4825741520103436" type="txtPergunta">
                                     <param id="0" name="Text">pergMedio.GetData(str(sortMedio.At(perguntaAtual -numPergFacil + UtilizouPular -1)), 0)</param>
@@ -315,7 +315,7 @@
                             <actions>
                                 <action id="-9" name="Set value" sid="906055105369440" type="System">
                                     <param id="0" name="Variable">infoNivel</param>
-                                    <param id="1" name="Value">&quot;&apos;&quot; &amp; pergDificil.GetData(&quot;numero&quot;, 1) &amp; &quot;&apos;,3,&apos;Nível Difícil&apos;&quot;</param>
+                                    <param id="1" name="Value">&quot;&apos;&quot; &amp; pergDificil.GetData(&quot;numero&quot;, 0) &amp; &quot;&apos;,3,&apos;Nível Difícil&apos;&quot;</param>
                                 </action>
                                 <action id="0" name="Set text" sid="6450203779535799" type="txtPergunta">
                                     <param id="0" name="Text">pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil -numPergMedio + UtilizouPular -1)), 0)</param>
