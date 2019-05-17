@@ -42,9 +42,9 @@ function sendRankingData(pontos){
     var info = {};
     var path;
     if(window.location.hostname == "localhost" ){   // for localhost tests
-        path = "/stats/saveChallengeStats"
+        path = "/stats/saveRankingStats"
     }else {                                 // for web version in production, electron and crosswalk versions
-        path = "http://remar.dc.ufscar.br/stats/saveChallengeStats"
+        path = "http://remar.dc.ufscar.br/stats/saveRankingStats"
     }
     $.getJSON("remar.json", function(json) {
         info.exportedResourceId = json.exportedResourceId;
@@ -67,9 +67,9 @@ function sendPlaytimeData(tempo,tipo,idJogo,idNivel,nomeNivel,idDesafio){
     var info = {};
     var path;
     if(window.location.hostname == "localhost" ){   // for localhost tests
-        path = "/stats/saveChallengeStats"
+        path = "/stats/saveTimeStats"
     }else {                                 // for web version in production, electron and crosswalk versions
-        path = "http://remar.dc.ufscar.br/stats/saveChallengeStats"
+        path = "http://remar.dc.ufscar.br/stats/saveTimeStats"
     }
     $.getJSON("remar.json", function(json) {
         info.exportedResourceId = json.exportedResourceId;
