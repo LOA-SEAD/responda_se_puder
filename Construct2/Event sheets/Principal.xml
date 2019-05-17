@@ -15,11 +15,8 @@
         <variable constant="0" name="erros" sid="935236188386902" static="0" type="number">0</variable>
         <comment>Variáveis para realizar o controle de quanto tempo o jogador levou para responder todas as perguntas</comment>
         <variable constant="0" name="tempoInicialTotal" sid="146811196246271" static="0" type="number">0</variable>
-        <variable constant="0" name="tempoFinalTotal" sid="266933254061707" static="0" type="number">0</variable>
         <variable constant="0" name="tempoInicialNivel" sid="808595155897143" static="0" type="number">0</variable>
-        <variable constant="0" name="tempoFinalNivel" sid="841195898857366" static="0" type="number">0</variable>
         <variable constant="0" name="tempoInicialDesafio" sid="355422255157241" static="0" type="number">0</variable>
-        <variable constant="0" name="tempoFinalDesafio" sid="773788341665852" static="0" type="number">0</variable>
         <event-group description="" sid="888587939706443" title="Animacao">
             <sub-events>
                 <event-block sid="3588293914077673">
@@ -279,25 +276,11 @@
                         <action id="0" name="Set cursor style" sid="1446973490748093" type="Mouse">
                             <param id="0" name="Cursor style">0</param>
                         </action>
-                        <action id="0" name="Execute" sid="274974040754001" type="CallJS">
-                            <param id="0" name="Value">&quot;sendPlaytimeData(0.0,0,&apos;RespondasePuder&apos;)&quot;</param>
-                        </action>
-                        <action id="0" name="Execute" sid="478385618974023" type="CallJS">
-                            <param id="0" name="Value">&quot;sendPlaytimeData(0.0,1,&apos;RespondasePuder&apos;,1,&apos;Nível Fácil&apos;)&quot;</param>
-                        </action>
                         <action id="-25" name="Go to layout (by name)" sid="4375921279440905" type="System">
                             <param id="0" name="Layout">&quot;Perguntas&quot;</param>
                         </action>
                         <action id="-9" name="Set value" sid="902274304117588" type="System">
                             <param id="0" name="Variable">tempoInicialTotal</param>
-                            <param id="1" name="Value">time</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="941662194830604" type="System">
-                            <param id="0" name="Variable">tempoInicialNivel</param>
-                            <param id="1" name="Value">time</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="960012781871499" type="System">
-                            <param id="0" name="Variable">tempoInicialDesafio</param>
                             <param id="1" name="Value">time</param>
                         </action>
                         <action id="0" name="Play" sid="8765011831774407" type="Audio">

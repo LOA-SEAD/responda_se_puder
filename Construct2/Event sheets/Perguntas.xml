@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Perguntas</name>
     <events>
+        <variable constant="0" name="sendTimeJS" sid="904027872942999" static="0" type="text">&quot;&quot;</variable>
         <variable constant="0" name="clicouProx" sid="8172070276037591" static="0" type="number">0</variable>
         <variable constant="0" name="UtilizouPular" sid="2712808717137155" static="0" type="number">0</variable>
         <variable constant="0" name="Utilizou5050" sid="1559911289954063" static="0" type="number">0</variable>
@@ -130,16 +131,6 @@
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-9" name="Set value" sid="691249175034758" type="System">
-                                    <param id="0" name="Variable">tempoFinalTotal</param>
-                                    <param id="1" name="Value">time</param>
-                                </action>
-                                <action id="0" name="Execute" sid="506510948854291" type="CallJS">
-                                    <param id="0" name="Value">&quot;sendPlaytimeData(&quot; &amp; (tempoFinalTotal-tempoInicialTotal) &amp; &quot;,0,&apos;RespondasePuder&apos;)&quot;</param>
-                                </action>
-                                <action id="0" name="Execute" sid="374112111510383" type="CallJS">
-                                    <param id="0" name="Value">&quot;sendPlaytimeData(&quot; &amp; (tempoFinalNivel-tempoInicialNivel) &amp; &quot;,1,&apos;RespondasePuder&apos;,3,&apos;Nível Difícil&apos;)&quot;</param>
-                                </action>
                                 <action id="-25" name="Go to layout (by name)" sid="7516078165663391" type="System">
                                     <param id="0" name="Layout">&quot;FimJogo&quot;</param>
                                 </action>
@@ -168,6 +159,10 @@
                         <action id="-12" name="Set group active" sid="4918057590331323" type="System">
                             <param id="0" name="Group name">&quot;RegrasJogo&quot;</param>
                             <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="429482008721126" type="System">
+                            <param id="0" name="Variable">tempoInicialDesafio</param>
+                            <param id="1" name="Value">time</param>
                         </action>
                     </actions>
                     <sub-events>
@@ -221,10 +216,20 @@
                                 </action>
                                 <action id="-9" name="Set value" sid="662398737545617" type="System">
                                     <param id="0" name="Variable">Pergunta</param>
-                                    <param id="1" name="Value">&quot;&apos;&quot; &amp; replace(pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), 0), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&apos;&quot; &amp; replace(RespCorreta, &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&apos;&quot; &amp; sortFacil.At(perguntaAtual + UtilizouPular - 1) - 1 &amp; &quot;&apos;,&apos;&quot; &amp; replace(pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(0)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(1)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(2)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(3)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&quot; </param>
+                                    <param id="1" name="Value">&quot;&apos;&quot; &amp; replace(pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), 0), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&apos;&quot; &amp; replace(RespCorreta, &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&apos;&quot; &amp; sortFacil.At(perguntaAtual + UtilizouPular - 1) &amp; &quot;&apos;,&apos;&quot; &amp; replace(pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(0)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(1)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(2)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergFacil.GetData(str(sortFacil.At(perguntaAtual + UtilizouPular - 1)), sortRespostas.At(3)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&quot; </param>
                                 </action>
-                                <action id="0" name="Set text" sid="502667195427417" type="debug">
-                                    <param id="0" name="Text">Pergunta</param>
+                                <action id="-16" name="Wait" sid="882123261440741" type="System">
+                                    <param id="0" name="Seconds">0.1</param>
+                                </action>
+                                <action id="0" name="Execute" sid="960019577370711" type="CallJS">
+                                    <param id="0" name="Value">&quot;sendPlaytimeData(0.0,2,&apos;RespondasePuder&apos;,1,&apos;Nível Fácil&apos;,&quot; &amp; sortFacil.At(perguntaAtual + UtilizouPular - 1) &amp; &quot;)&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="776371654239600" type="System">
+                                    <param id="0" name="Variable">sendTimeJS</param>
+                                    <param id="1" name="Value">&quot;1,&apos;Nível Fácil&apos;,&quot; &amp; sortFacil.At(perguntaAtual + UtilizouPular - 1) &amp; &quot;)&quot;</param>
+                                </action>
+                                <action id="0" name="Set text" sid="186744472973682" type="debug">
+                                    <param id="0" name="Text">sendTimeJS</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -283,7 +288,20 @@
                                 </action>
                                 <action id="-9" name="Set value" sid="558701248771519" type="System">
                                     <param id="0" name="Variable">Pergunta</param>
-                                    <param id="1" name="Value">&quot;&apos;&quot; &amp; replace(pergMedio.GetData(str(sortMedio.At(perguntaAtual -numPergFacil + UtilizouPular -1)), 0), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&apos;&quot; &amp; replace(RespCorreta, &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&apos;&quot; &amp; sortMedio.At(perguntaAtual -numPergFacil + UtilizouPular -1) - 1 &amp; &quot;&apos;,&apos;&quot; &amp; replace(pergMedio.GetData(str(sortMedio.At(perguntaAtual - numPergFacil + UtilizouPular - 1)), sortRespostas.At(0)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergMedio.GetData(str(sortMedio.At(perguntaAtual - numPergFacil + UtilizouPular - 1)), sortRespostas.At(1)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergMedio.GetData(str(sortMedio.At(perguntaAtual - numPergFacil + UtilizouPular - 1)), sortRespostas.At(2)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergMedio.GetData(str(sortMedio.At(perguntaAtual - numPergFacil + UtilizouPular - 1)), sortRespostas.At(3)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&quot; </param>
+                                    <param id="1" name="Value">&quot;&apos;&quot; &amp; replace(pergMedio.GetData(str(sortMedio.At(perguntaAtual -numPergFacil + UtilizouPular -1)), 0), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&apos;&quot; &amp; replace(RespCorreta, &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&apos;&quot; &amp; sortMedio.At(perguntaAtual -numPergFacil + UtilizouPular -1) &amp; &quot;&apos;,&apos;&quot; &amp; replace(pergMedio.GetData(str(sortMedio.At(perguntaAtual - numPergFacil + UtilizouPular - 1)), sortRespostas.At(0)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergMedio.GetData(str(sortMedio.At(perguntaAtual - numPergFacil + UtilizouPular - 1)), sortRespostas.At(1)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergMedio.GetData(str(sortMedio.At(perguntaAtual - numPergFacil + UtilizouPular - 1)), sortRespostas.At(2)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergMedio.GetData(str(sortMedio.At(perguntaAtual - numPergFacil + UtilizouPular - 1)), sortRespostas.At(3)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&quot; </param>
+                                </action>
+                                <action id="-16" name="Wait" sid="224996546762722" type="System">
+                                    <param id="0" name="Seconds">0.1</param>
+                                </action>
+                                <action id="0" name="Execute" sid="497806150616048" type="CallJS">
+                                    <param id="0" name="Value">&quot;sendPlaytimeData(0.0,2,&apos;RespondasePuder&apos;,2,&apos;Nível Médio&apos;,&quot; &amp; sortMedio.At(perguntaAtual -numPergFacil + UtilizouPular -1) &amp; &quot;)&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="474305084722774" type="System">
+                                    <param id="0" name="Variable">sendTimeJS</param>
+                                    <param id="1" name="Value">&quot;2,&apos;Nível Médio&apos;,&quot; &amp; sortMedio.At(perguntaAtual -numPergFacil + UtilizouPular -1) &amp; &quot;)&quot;</param>
+                                </action>
+                                <action id="0" name="Set text" sid="280210278061022" type="debug">
+                                    <param id="0" name="Text">sendTimeJS</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -342,7 +360,20 @@
                                 </action>
                                 <action id="-9" name="Set value" sid="103946417803621" type="System">
                                     <param id="0" name="Variable">Pergunta</param>
-                                    <param id="1" name="Value">&quot;&apos;&quot; &amp; replace(pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil -numPergMedio + UtilizouPular -1)), 0), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&apos;&quot; &amp; replace(RespCorreta, &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&apos;&quot; &amp; sortDificil.At(perguntaAtual -numPergFacil -numPergMedio + UtilizouPular -1) - 1 &amp; &quot;&apos;,&apos;&quot; &amp; replace(pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil - numPergMedio + UtilizouPular -1)), sortRespostas.At(0)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil - numPergMedio + UtilizouPular -1)), sortRespostas.At(1)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil - numPergMedio + UtilizouPular -1)), sortRespostas.At(2)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil - numPergMedio + UtilizouPular -1)), sortRespostas.At(3)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&quot; </param>
+                                    <param id="1" name="Value">&quot;&apos;&quot; &amp; replace(pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil -numPergMedio + UtilizouPular -1)), 0), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&apos;&quot; &amp; replace(RespCorreta, &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&apos;&quot; &amp; sortDificil.At(perguntaAtual -numPergFacil -numPergMedio + UtilizouPular -1) &amp; &quot;&apos;,&apos;&quot; &amp; replace(pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil - numPergMedio + UtilizouPular -1)), sortRespostas.At(0)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil - numPergMedio + UtilizouPular -1)), sortRespostas.At(1)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil - numPergMedio + UtilizouPular -1)), sortRespostas.At(2)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;,&quot; &amp; replace(pergDificil.GetData(str(sortDificil.At(perguntaAtual -numPergFacil - numPergMedio + UtilizouPular -1)), sortRespostas.At(3)), &quot;&apos;&quot;, &quot;\&apos;&quot;) &amp; &quot;&apos;,&quot; </param>
+                                </action>
+                                <action id="-16" name="Wait" sid="428489050212805" type="System">
+                                    <param id="0" name="Seconds">0.1</param>
+                                </action>
+                                <action id="0" name="Execute" sid="886513803329906" type="CallJS">
+                                    <param id="0" name="Value">&quot;sendPlaytimeData(0.0,2,&apos;RespondasePuder&apos;,3,&apos;Nível Difícil&apos;,&quot; &amp; sortDificil.At(perguntaAtual -numPergFacil -numPergMedio + UtilizouPular -1) &amp; &quot;)&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="141163263529407" type="System">
+                                    <param id="0" name="Variable">sendTimeJS</param>
+                                    <param id="1" name="Value">&quot;3,&apos;Nível Difícil&apos;,&quot; &amp; sortDificil.At(perguntaAtual -numPergFacil -numPergMedio + UtilizouPular -1) &amp; &quot;)&quot;</param>
+                                </action>
+                                <action id="0" name="Set text" sid="748182824219291" type="debug">
+                                    <param id="0" name="Text">sendTimeJS</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -366,6 +397,124 @@
         <event-group description="" sid="5538108785921915" title="RegrasJogo">
             <sub-events>
                 <comment>Verifica se o usuário utilizou o 5050 nesta pergunta.&#x0D;&#x0A;Isso serve para quando o usuário utilizar o 5050, errar, e então as alternativas excluídas ainda estarão lá.</comment>
+                <event-block sid="596728652481527">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="209604884459996" type="System">
+                            <param id="0" name="First value">perguntaAtual</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="763460671194624">
+                            <conditions>
+                                <condition id="-4" name="Trigger once while true" sid="338946833479990" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="280156720065477" type="System">
+                                    <param id="0" name="Variable">tempoInicialNivel</param>
+                                    <param id="1" name="Value">time</param>
+                                </action>
+                                <action id="0" name="Execute" sid="940643881241939" type="CallJS">
+                                    <param id="0" name="Value">&quot;sendPlaytimeData(0.0,0,&apos;RespondasePuder&apos;)&quot;</param>
+                                </action>
+                                <action id="0" name="Execute" sid="249507762019827" type="CallJS">
+                                    <param id="0" name="Value">&quot;sendPlaytimeData(0.0,1,&apos;RespondasePuder&apos;,1,&apos;Nível Fácil&apos;)&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="922499996355344">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="100157954537653" type="System">
+                            <param id="0" name="First value">perguntaAtual</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">numPergFacil+1</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="541318312304592">
+                            <conditions>
+                                <condition id="-4" name="Trigger once while true" sid="925832542380121" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Execute" sid="274310549945823" type="CallJS">
+                                    <param id="0" name="Value">&quot;sendPlaytimeData(&quot; &amp; time-tempoInicialNivel &amp; &quot;,1,&apos;RespondasePuder&apos;,1,&apos;Nível Fácil&apos;)&quot;</param>
+                                </action>
+                                <action disabled="1" id="-16" name="Wait" sid="549060746159108" type="System">
+                                    <param id="0" name="Seconds">2</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="826762971042294" type="System">
+                                    <param id="0" name="Variable">tempoInicialNivel</param>
+                                    <param id="1" name="Value">time</param>
+                                </action>
+                                <action id="0" name="Execute" sid="471258468756483" type="CallJS">
+                                    <param id="0" name="Value">&quot;sendPlaytimeData(0.0,1,&apos;RespondasePuder&apos;,2,&apos;Nível Médio&apos;)&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="375095516572548">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="268175293679941" type="System">
+                            <param id="0" name="First value">perguntaAtual</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">numPergFacil+numPergMedio+1</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="343979767495934">
+                            <conditions>
+                                <condition id="-4" name="Trigger once while true" sid="997296347933802" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Execute" sid="256756588443452" type="CallJS">
+                                    <param id="0" name="Value">&quot;sendPlaytimeData(&quot; &amp; time-tempoInicialNivel &amp; &quot;,1,&apos;RespondasePuder&apos;,2,&apos;Nível Médio&apos;)&quot;</param>
+                                </action>
+                                <action disabled="1" id="-16" name="Wait" sid="332839105332260" type="System">
+                                    <param id="0" name="Seconds">2</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="472842293005048" type="System">
+                                    <param id="0" name="Variable">tempoInicialNivel</param>
+                                    <param id="1" name="Value">time</param>
+                                </action>
+                                <action id="0" name="Execute" sid="888627593930331" type="CallJS">
+                                    <param id="0" name="Value">&quot;sendPlaytimeData(0.0,1,&apos;RespondasePuder&apos;,3,&apos;Nível Difícil&apos;)&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="697060654848469">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="700797857363553" type="System">
+                            <param id="0" name="First value">perguntaAtual</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">numPergFacil+numPergMedio+numPergDificil+1</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="113173988717886">
+                            <conditions>
+                                <condition id="-4" name="Trigger once while true" sid="772354325006446" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Execute" sid="422894720075382" type="CallJS">
+                                    <param id="0" name="Value">&quot;sendPlaytimeData(&quot; &amp; time-tempoInicialNivel &amp; &quot;,1,&apos;RespondasePuder&apos;,3,&apos;Nível Difícil&apos;)&quot;</param>
+                                </action>
+                                <action id="0" name="Execute" sid="429175636755857" type="CallJS">
+                                    <param id="0" name="Value">&quot;sendPlaytimeData(&quot; &amp; time-tempoInicialTotal &amp; &quot;,0,&apos;RespondasePuder&apos;)&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
                 <event-block sid="3372567983075992">
                     <conditions>
                         <condition id="-8" name="Compare two values" sid="9771512558650648" type="System">
@@ -504,6 +653,9 @@
                                         </condition>
                                     </conditions>
                                     <actions>
+                                        <action id="0" name="Execute" sid="170698329017363" type="CallJS">
+                                            <param id="0" name="Value">&quot;sendPlaytimeData(&quot; &amp; time-tempoInicialDesafio &amp; &quot;,2,&apos;RespondasePuder&apos;,&quot; &amp; sendTimeJS</param>
+                                        </action>
                                         <action id="-10" name="Add to" sid="5997317697833505" type="System">
                                             <param id="0" name="Variable">perguntaAtual</param>
                                             <param id="1" name="Value">1</param>
@@ -556,8 +708,8 @@
                                             <param id="0" name="Layer">&quot;LayBotoes&quot;</param>
                                             <param id="1" name="Visibility">0</param>
                                         </action>
-                                        <action id="-16" name="Wait" sid="4794438210772392" type="System">
-                                            <param id="0" name="Seconds">2.0</param>
+                                        <action id="-16" name="Wait" sid="568407011423297" type="System">
+                                            <param id="0" name="Seconds">2</param>
                                         </action>
                                         <action id="-1" name="Set X" sid="6707462143764599" type="btnDica">
                                             <param id="0" name="X">btnDica.X*(-1)</param>
