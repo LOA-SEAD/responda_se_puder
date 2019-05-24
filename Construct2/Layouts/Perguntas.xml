@@ -201,11 +201,11 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>638</x>
-                        <y>571</y>
+                        <x>160.029418945</x>
+                        <y>562.858520508</y>
                         <z>0</z>
-                        <width>160</width>
-                        <height>30</height>
+                        <width>238.058822632</width>
+                        <height>45.282928467</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -286,9 +286,9 @@
                 </instance>
                 <instance type="txtPontuacao" uid="10">
                     <properties>
-                        <text>Pontuação:</text>
+                        <text>Nível: \n Pontuação:</text>
                         <initial-visibility>Visible</initial-visibility>
-                        <font>Arial,-16</font>
+                        <font>Arial,-19,400,0</font>
                         <color>225,225,225</color>
                         <horizontal-alignment>Left</horizontal-alignment>
                         <vertical-alignment>Top</vertical-alignment>
@@ -299,11 +299,11 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>30</x>
-                        <y>537</y>
+                        <x>414</x>
+                        <y>540</y>
                         <z>0</z>
                         <width>352</width>
-                        <height>32</height>
+                        <height>55</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>

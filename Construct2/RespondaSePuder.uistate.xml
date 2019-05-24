@@ -10,7 +10,8 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML 5" />
     </configurations>
     <open-tabs>
-        <event-sheet active="1" order="0">Perguntas</event-sheet>
+        <layout active="1" order="1">Perguntas</layout>
+        <event-sheet order="0">Perguntas</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -30,10 +31,10 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="event-folder/" />
         <folder expanded="1" path="file-folder/" />
         <folder expanded="0" path="sound-folder/" />
-        <folder expanded="1" path="music-folder/" />
-        <folder expanded="1" path="file-folder/Icons/" />
+        <folder expanded="0" path="music-folder/" />
+        <folder expanded="0" path="file-folder/Icons/" />
         <folder expanded="1" path="file-folder/Perguntas/" />
-        <folder expanded="1" path="file-folder/Coleta/" />
+        <folder expanded="0" path="file-folder/Coleta/" />
         <folder expanded="1" path="animation-folder/btnJogar/" />
         <folder expanded="1" path="animation-folder/btnCreditos/" />
         <folder expanded="1" path="animation-folder/btnInstrucoes/" />

@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Perguntas</name>
     <events>
+        <variable constant="0" name="mudouNivel" sid="133107812454502" static="0" type="number">0</variable>
         <variable constant="0" name="sendTimeJS" sid="904027872942999" static="0" type="text">&quot;&quot;</variable>
         <variable constant="0" name="clicouProx" sid="8172070276037591" static="0" type="number">0</variable>
         <variable constant="0" name="UtilizouPular" sid="2712808717137155" static="0" type="number">0</variable>
@@ -25,7 +26,19 @@
             <conditions>
                 <condition id="-2" name="On start of layout" sid="6168563823339619" type="System" />
             </conditions>
-            <actions />
+            <actions>
+                <action id="-21" name="Reset global variables" sid="822726698327728" type="System" />
+                <action id="-9" name="Set value" sid="588379948886410" type="System">
+                    <param id="0" name="Variable">tempoInicialNivel</param>
+                    <param id="1" name="Value">time</param>
+                </action>
+                <action id="0" name="Execute" sid="373179958902255" type="CallJS">
+                    <param id="0" name="Value">&quot;sendPlaytimeData(0.0,0,&apos;RespondasePuder&apos;)&quot;</param>
+                </action>
+                <action id="0" name="Execute" sid="486107002246494" type="CallJS">
+                    <param id="0" name="Value">&quot;sendPlaytimeData(0.0,1,&apos;RespondasePuder&apos;,1,&apos;Nível Fácil&apos;)&quot;</param>
+                </action>
+            </actions>
             <sub-events>
                 <event-block sid="7375749086934334">
                     <conditions>
@@ -131,6 +144,12 @@
                                 </condition>
                             </conditions>
                             <actions>
+                                <action id="0" name="Execute" sid="478958226093296" type="CallJS">
+                                    <param id="0" name="Value">&quot;sendPlaytimeData(&quot; &amp; time-tempoInicialNivel &amp; &quot;,1,&apos;RespondasePuder&apos;,3,&apos;Nível Difícil&apos;)&quot;</param>
+                                </action>
+                                <action id="0" name="Execute" sid="901899634532447" type="CallJS">
+                                    <param id="0" name="Value">&quot;sendPlaytimeData(&quot; &amp; time-tempoInicialTotal &amp; &quot;,0,&apos;RespondasePuder&apos;)&quot;</param>
+                                </action>
                                 <action id="-25" name="Go to layout (by name)" sid="7516078165663391" type="System">
                                     <param id="0" name="Layout">&quot;FimJogo&quot;</param>
                                 </action>
@@ -147,9 +166,6 @@
                     <actions>
                         <action id="6" name="Enable all lines" sid="6423779790026799" type="radboxResp" />
                         <action id="9" name="Uncheck all lines" sid="1967812853456622" type="radboxResp" />
-                        <action id="0" name="Set text" sid="6023385048759833" type="txtPontuacao">
-                            <param id="0" name="Text">&quot;Pontuação - Acertos: &quot;&amp; acertos &amp; &quot; Erros: &quot; &amp; erros</param>
-                        </action>
                         <action id="0" name="New scramble" sid="372134387999412" type="sortRespostas" />
                         <action id="0" name="New scramble" sid="6889698766346827" type="sort5050" />
                         <action id="-9" name="Set value" sid="8077370747565611" type="System">
@@ -175,6 +191,9 @@
                                 </condition>
                             </conditions>
                             <actions>
+                                <action id="0" name="Set text" sid="6023385048759833" type="txtPontuacao">
+                                    <param id="0" name="Text">&quot;Questão &quot; &amp;perguntaAtual &amp; &quot; de &quot; &amp; numPergFacil &amp; &quot; - Nível Fácil&quot; &amp; newline &amp; &quot;Pontuação - Acertos: &quot;&amp; acertos &amp; &quot; Erros: &quot; &amp; erros</param>
+                                </action>
                                 <action id="-9" name="Set value" sid="341185772980976" type="System">
                                     <param id="0" name="Variable">infoNivel</param>
                                     <param id="1" name="Value">&quot;&apos;&quot; &amp; PergFacil.GetData(&quot;numero&quot;, 0) &amp; &quot;&apos;,1,&apos;Nível Fácil&apos;&quot;</param>
@@ -244,6 +263,9 @@
                                 </condition>
                             </conditions>
                             <actions>
+                                <action id="0" name="Set text" sid="193649375530535" type="txtPontuacao">
+                                    <param id="0" name="Text">&quot;Questão &quot; &amp;perguntaAtual-numPergFacil &amp; &quot; de &quot; &amp; numPergMedio &amp; &quot; - Nível Médio&quot; &amp; newline &amp; &quot;Pontuação - Acertos: &quot;&amp; acertos &amp; &quot; Erros: &quot; &amp; erros</param>
+                                </action>
                                 <action id="-9" name="Set value" sid="106332696999565" type="System">
                                     <param id="0" name="Variable">infoNivel</param>
                                     <param id="1" name="Value">&quot;&apos;&quot; &amp; pergMedio.GetData(&quot;numero&quot;, 0) &amp; &quot;&apos;,2,&apos;Nível Médio&apos;&quot;</param>
@@ -313,6 +335,9 @@
                                 </condition>
                             </conditions>
                             <actions>
+                                <action id="0" name="Set text" sid="436323123197509" type="txtPontuacao">
+                                    <param id="0" name="Text">&quot;Questão &quot; &amp;perguntaAtual-numPergMedio-numPergFacil &amp; &quot; de &quot; &amp; numPergDificil &amp; &quot; - Nível Difícil&quot; &amp; newline &amp; &quot;Pontuação - Acertos: &quot;&amp; acertos &amp; &quot; Erros: &quot; &amp; erros</param>
+                                </action>
                                 <action id="-9" name="Set value" sid="906055105369440" type="System">
                                     <param id="0" name="Variable">infoNivel</param>
                                     <param id="1" name="Value">&quot;&apos;&quot; &amp; pergDificil.GetData(&quot;numero&quot;, 0) &amp; &quot;&apos;,3,&apos;Nível Difícil&apos;&quot;</param>
@@ -388,123 +413,97 @@
         <event-group description="" sid="5538108785921915" title="RegrasJogo">
             <sub-events>
                 <comment>Verifica se o usuário utilizou o 5050 nesta pergunta.&#x0D;&#x0A;Isso serve para quando o usuário utilizar o 5050, errar, e então as alternativas excluídas ainda estarão lá.</comment>
-                <event-block sid="596728652481527">
-                    <conditions>
-                        <condition id="-8" name="Compare two values" sid="209604884459996" type="System">
-                            <param id="0" name="First value">perguntaAtual</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Second value">1</param>
-                        </condition>
-                    </conditions>
-                    <actions />
-                    <sub-events>
-                        <event-block sid="763460671194624">
-                            <conditions>
-                                <condition id="-4" name="Trigger once while true" sid="338946833479990" type="System" />
-                            </conditions>
-                            <actions>
-                                <action id="-9" name="Set value" sid="280156720065477" type="System">
-                                    <param id="0" name="Variable">tempoInicialNivel</param>
-                                    <param id="1" name="Value">time</param>
-                                </action>
-                                <action id="0" name="Execute" sid="940643881241939" type="CallJS">
-                                    <param id="0" name="Value">&quot;sendPlaytimeData(0.0,0,&apos;RespondasePuder&apos;)&quot;</param>
-                                </action>
-                                <action id="0" name="Execute" sid="249507762019827" type="CallJS">
-                                    <param id="0" name="Value">&quot;sendPlaytimeData(0.0,1,&apos;RespondasePuder&apos;,1,&apos;Nível Fácil&apos;)&quot;</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
-                </event-block>
                 <event-block sid="922499996355344">
                     <conditions>
+                        <condition id="-8" name="Compare two values" sid="194088747916059" type="System">
+                            <param id="0" name="First value">mudouNivel</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
                         <condition id="-8" name="Compare two values" sid="100157954537653" type="System">
                             <param id="0" name="First value">perguntaAtual</param>
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Second value">numPergFacil+1</param>
                         </condition>
                     </conditions>
-                    <actions />
-                    <sub-events>
-                        <event-block sid="541318312304592">
-                            <conditions>
-                                <condition id="-4" name="Trigger once while true" sid="925832542380121" type="System" />
-                            </conditions>
-                            <actions>
-                                <action id="0" name="Execute" sid="274310549945823" type="CallJS">
-                                    <param id="0" name="Value">&quot;sendPlaytimeData(&quot; &amp; time-tempoInicialNivel &amp; &quot;,1,&apos;RespondasePuder&apos;,1,&apos;Nível Fácil&apos;)&quot;</param>
-                                </action>
-                                <action disabled="1" id="-16" name="Wait" sid="549060746159108" type="System">
-                                    <param id="0" name="Seconds">2</param>
-                                </action>
-                                <action id="-9" name="Set value" sid="826762971042294" type="System">
-                                    <param id="0" name="Variable">tempoInicialNivel</param>
-                                    <param id="1" name="Value">time</param>
-                                </action>
-                                <action id="0" name="Execute" sid="471258468756483" type="CallJS">
-                                    <param id="0" name="Value">&quot;sendPlaytimeData(0.0,1,&apos;RespondasePuder&apos;,2,&apos;Nível Médio&apos;)&quot;</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
+                    <actions>
+                        <action id="-9" name="Set value" sid="365721207179784" type="System">
+                            <param id="0" name="Variable">mudouNivel</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="541318312304592">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="157035561021759" type="System">
+                            <param id="0" name="First value">mudouNivel</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">1</param>
+                        </condition>
+                        <condition id="-4" name="Trigger once while true" sid="710332794816276" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Execute" sid="274310549945823" type="CallJS">
+                            <param id="0" name="Value">&quot;sendPlaytimeData(&quot; &amp; time-tempoInicialNivel &amp; &quot;,1,&apos;RespondasePuder&apos;,1,&apos;Nível Fácil&apos;)&quot;</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="826762971042294" type="System">
+                            <param id="0" name="Variable">tempoInicialNivel</param>
+                            <param id="1" name="Value">time</param>
+                        </action>
+                        <action id="0" name="Execute" sid="471258468756483" type="CallJS">
+                            <param id="0" name="Value">&quot;sendPlaytimeData(0.0,1,&apos;RespondasePuder&apos;,2,&apos;Nível Médio&apos;)&quot;</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="661482633269442" type="System">
+                            <param id="0" name="Variable">mudouNivel</param>
+                            <param id="1" name="Value">2</param>
+                        </action>
+                    </actions>
                 </event-block>
                 <event-block sid="375095516572548">
                     <conditions>
+                        <condition id="-8" name="Compare two values" sid="448631008253443" type="System">
+                            <param id="0" name="First value">mudouNivel</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">2</param>
+                        </condition>
                         <condition id="-8" name="Compare two values" sid="268175293679941" type="System">
                             <param id="0" name="First value">perguntaAtual</param>
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Second value">numPergFacil+numPergMedio+1</param>
                         </condition>
                     </conditions>
-                    <actions />
-                    <sub-events>
-                        <event-block sid="343979767495934">
-                            <conditions>
-                                <condition id="-4" name="Trigger once while true" sid="997296347933802" type="System" />
-                            </conditions>
-                            <actions>
-                                <action id="0" name="Execute" sid="256756588443452" type="CallJS">
-                                    <param id="0" name="Value">&quot;sendPlaytimeData(&quot; &amp; time-tempoInicialNivel &amp; &quot;,1,&apos;RespondasePuder&apos;,2,&apos;Nível Médio&apos;)&quot;</param>
-                                </action>
-                                <action disabled="1" id="-16" name="Wait" sid="332839105332260" type="System">
-                                    <param id="0" name="Seconds">2</param>
-                                </action>
-                                <action id="-9" name="Set value" sid="472842293005048" type="System">
-                                    <param id="0" name="Variable">tempoInicialNivel</param>
-                                    <param id="1" name="Value">time</param>
-                                </action>
-                                <action id="0" name="Execute" sid="888627593930331" type="CallJS">
-                                    <param id="0" name="Value">&quot;sendPlaytimeData(0.0,1,&apos;RespondasePuder&apos;,3,&apos;Nível Difícil&apos;)&quot;</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
+                    <actions>
+                        <action id="-9" name="Set value" sid="389528293550029" type="System">
+                            <param id="0" name="Variable">mudouNivel</param>
+                            <param id="1" name="Value">3</param>
+                        </action>
+                    </actions>
                 </event-block>
-                <event-block sid="697060654848469">
+                <event-block sid="343979767495934">
                     <conditions>
-                        <condition id="-8" name="Compare two values" sid="700797857363553" type="System">
-                            <param id="0" name="First value">perguntaAtual</param>
+                        <condition id="-8" name="Compare two values" sid="318691926330539" type="System">
+                            <param id="0" name="First value">mudouNivel</param>
                             <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Second value">numPergFacil+numPergMedio+numPergDificil+1</param>
+                            <param id="2" name="Second value">3</param>
                         </condition>
+                        <condition id="-4" name="Trigger once while true" sid="997296347933802" type="System" />
                     </conditions>
-                    <actions />
-                    <sub-events>
-                        <event-block sid="113173988717886">
-                            <conditions>
-                                <condition id="-4" name="Trigger once while true" sid="772354325006446" type="System" />
-                            </conditions>
-                            <actions>
-                                <action id="0" name="Execute" sid="422894720075382" type="CallJS">
-                                    <param id="0" name="Value">&quot;sendPlaytimeData(&quot; &amp; time-tempoInicialNivel &amp; &quot;,1,&apos;RespondasePuder&apos;,3,&apos;Nível Difícil&apos;)&quot;</param>
-                                </action>
-                                <action id="0" name="Execute" sid="429175636755857" type="CallJS">
-                                    <param id="0" name="Value">&quot;sendPlaytimeData(&quot; &amp; time-tempoInicialTotal &amp; &quot;,0,&apos;RespondasePuder&apos;)&quot;</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
+                    <actions>
+                        <action id="0" name="Execute" sid="256756588443452" type="CallJS">
+                            <param id="0" name="Value">&quot;sendPlaytimeData(&quot; &amp; time-tempoInicialNivel &amp; &quot;,1,&apos;RespondasePuder&apos;,2,&apos;Nível Médio&apos;)&quot;</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="472842293005048" type="System">
+                            <param id="0" name="Variable">tempoInicialNivel</param>
+                            <param id="1" name="Value">time</param>
+                        </action>
+                        <action id="0" name="Execute" sid="888627593930331" type="CallJS">
+                            <param id="0" name="Value">&quot;sendPlaytimeData(0.0,1,&apos;RespondasePuder&apos;,3,&apos;Nível Difícil&apos;)&quot;</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="396076262673733" type="System">
+                            <param id="0" name="Variable">mudouNivel</param>
+                            <param id="1" name="Value">4</param>
+                        </action>
+                    </actions>
                 </event-block>
                 <event-block sid="3372567983075992">
                     <conditions>
@@ -1596,38 +1595,38 @@
                 </event-group>
                 <event-group description="" sid="7870359539103229" title="atribCSS">
                     <sub-events>
-                        <event-block sid="8041457979970586">
+                        <event-block sid="867474305061423">
                             <conditions>
-                                <condition id="7" name="Cursor is over object" sid="2798216308288458" type="Mouse">
+                                <condition id="7" name="Cursor is over object" sid="535384240468299" type="Mouse">
                                     <param id="0" name="Object">btnConfirmar</param>
                                 </condition>
                             </conditions>
                             <actions />
                             <sub-events>
-                                <event-block sid="5666021865283324">
+                                <event-block sid="971942028917879">
                                     <conditions>
-                                        <condition id="0" name="is checked?" sid="6834578345037969" type="radboxResp" />
+                                        <condition id="0" name="is checked?" sid="973453189973066" type="radboxResp" />
                                     </conditions>
                                     <actions>
-                                        <action id="4" name="Set animation" sid="4415728748784728" type="btnConfirmar">
+                                        <action id="4" name="Set animation" sid="610555143333158" type="btnConfirmar">
                                             <param id="0" name="Animation">&quot;Ativado&quot;</param>
                                             <param id="1" name="From">0</param>
                                         </action>
-                                        <action id="-9" name="Set value" sid="7993697225622393" type="System">
+                                        <action id="-9" name="Set value" sid="660494271635623" type="System">
                                             <param id="0" name="Variable">volume</param>
                                             <param id="1" name="Value">0</param>
                                         </action>
-                                        <action id="0" name="Set cursor style" sid="4004521753622413" type="Mouse">
+                                        <action id="0" name="Set cursor style" sid="108603393178342" type="Mouse">
                                             <param id="0" name="Cursor style">1</param>
                                         </action>
                                     </actions>
                                 </event-block>
-                                <event-block sid="2183508401503907">
+                                <event-block sid="164466927515933">
                                     <conditions>
-                                        <condition id="-22" name="Else" sid="1823038138133242" type="System" />
+                                        <condition id="-22" name="Else" sid="148988496209806" type="System" />
                                     </conditions>
                                     <actions>
-                                        <action id="-9" name="Set value" sid="3088401566425594" type="System">
+                                        <action id="-9" name="Set value" sid="316168051031556" type="System">
                                             <param id="0" name="Variable">volume</param>
                                             <param id="1" name="Value">-100</param>
                                         </action>
